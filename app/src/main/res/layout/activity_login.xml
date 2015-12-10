@@ -29,7 +29,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView5"
-        android:layout_marginTop="46dp">
+        android:layout_marginTop="46dp"
+        android:layout_alignLeft="@+id/login"
+        android:layout_alignStart="@+id/login">
 
         <TableRow
             android:layout_width="match_parent"
@@ -48,7 +50,7 @@
                 android:id="@+id/login_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_column="7"
+                android:layout_column="8"
                 android:ems="10"
                 android:hint="@string/input_name_hint" />
         </TableRow>
@@ -70,7 +72,7 @@
                 android:id="@+id/login_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_column="7"
+                android:layout_column="8"
                 android:ems="10"
                 android:inputType="textPassword" />
         </TableRow>

@@ -17,7 +17,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1.22">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -25,28 +26,39 @@
             android:layout_height="match_parent"
             android:baselineAligned="false">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="乘机人："
-                android:id="@+id/textView21"
-                android:textSize="30sp" />
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="张三"
-                android:id="@+id/textView22"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="乘机人："
+                    android:id="@+id/textView21"
+                    android:textSize="30sp"
+                    android:layout_row="0"
+                    android:layout_column="0"/>
 
-                android:textSize="35sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="张三"
+                    android:id="@+id/textView22"
 
-            <ImageView
-                android:layout_width="362dp"
-                android:layout_height="match_parent"
-                android:id="@+id/imageView"
-                android:src="@drawable/you" />
+                    android:textSize="35sp"
+                    android:layout_row="0"
+                    android:layout_column="1"/>
+
+                <ImageView
+                    android:layout_width="240dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView"
+                    android:src="@drawable/you"
+                    android:layout_row="0"
+                    android:layout_column="2"/>
+            </GridLayout>
 
         </LinearLayout>
 
