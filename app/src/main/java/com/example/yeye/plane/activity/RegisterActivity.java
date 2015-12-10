@@ -1,22 +1,27 @@
-package com.example.yeye.plane;
+package com.example.yeye.plane.activity;
 
+
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-public class PassengerActivity extends AppCompatActivity {
+import com.example.yeye.plane.R;
 
-    private android.support.v7.app.ActionBar bar;
 
+public class RegisterActivity extends AppCompatActivity {
+
+    private ActionBar bar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_passenger);
+        setContentView(R.layout.activity_register);
+
         bar = getSupportActionBar();
         bar.setDisplayHomeAsUpEnabled(true);
         bar.setDisplayShowHomeEnabled(true);
         bar.setHomeButtonEnabled(true);
-        bar.setTitle("乘客信息");
+        bar.setTitle("注册");
     }
 
     /*

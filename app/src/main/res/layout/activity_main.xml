@@ -13,7 +13,7 @@
         <fragment
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:name="com.example.yeye.plane.queryFragment" />
+            android:name="com.example.yeye.plane.fragment.queryFragment" />
     </FrameLayout>
 
     <FrameLayout
