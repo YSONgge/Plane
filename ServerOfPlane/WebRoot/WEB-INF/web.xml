@@ -22,6 +22,11 @@
     <servlet-name>ChangePW</servlet-name>
     <servlet-class>servlet.ChangePW</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CheckUserExist</servlet-name>
+    <servlet-class>servlet.CheckUserExist</servlet-class>
+  </servlet>
+
 
 
 
@@ -36,6 +41,10 @@
   <servlet-mapping>
     <servlet-name>ChangePW</servlet-name>
     <url-pattern>/servlet/ChangePW</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CheckUserExist</servlet-name>
+    <url-pattern>/servlet/CheckUserExist</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
