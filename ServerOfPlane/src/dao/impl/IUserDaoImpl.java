@@ -85,7 +85,7 @@ public class IUserDaoImpl implements IUserDao {
 		return flag;
 	}
 
-	public boolean userRegist(User u) {
+	public boolean userRegister(User u) {
 		boolean flag = false;
 		if (checkUserExist(u)) {
 			return flag;

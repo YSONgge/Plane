@@ -1,12 +1,15 @@
-package com.example.yeye.plane;
+package com.example.yeye.plane.activity;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.yeye.plane.R;
+
 public class LoginActivity extends AppCompatActivity {
 
-    private android.support.v7.app.ActionBar bar;
+    private ActionBar bar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

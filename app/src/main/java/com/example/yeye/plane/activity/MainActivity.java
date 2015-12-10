@@ -1,4 +1,4 @@
-package com.example.yeye.plane;
+package com.example.yeye.plane.activity;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +9,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+
+import com.example.yeye.plane.R;
+import com.example.yeye.plane.fragment.mineFragment;
+import com.example.yeye.plane.fragment.orderFragment;
+import com.example.yeye.plane.fragment.queryFragment;
 
 public class MainActivity extends AppCompatActivity implements mineFragment.OnFragmentInteractionListener,queryFragment.OnFragmentInteractionListener,orderFragment.OnFragmentInteractionListener {
 
@@ -23,6 +28,15 @@ public class MainActivity extends AppCompatActivity implements mineFragment.OnFr
         mPagerAdapter = new CollectionPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mPagerAdapter);
+        mViewPager.setOnPageChangeListener(
+                new ViewPager.SimpleOnPageChangeListener() {
+                    @Override
+                    public void onPageSelected(int position) {
+                        // When swiping between pages, select the
+                        // corresponding tab.
+                        getSupportActionBar().setSelectedNavigationItem(position);
+                    }
+                });
         final ActionBar actionBar = getSupportActionBar();
         // Specify that tabs should be displayed in the action bar.
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
