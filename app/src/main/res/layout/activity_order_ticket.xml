@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="1">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:weightSum="1">
 
     <TextView
+        android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="订单信息"
-        android:id="@+id/textView20"
-        android:textSize="40sp" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="40sp"/>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1.22">
+        android:layout_weight="1.22"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:id="@+id/textView21"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="乘机人："
-                    android:id="@+id/textView21"
-                    android:textSize="30sp"
+                    android:layout_column="0"
                     android:layout_row="0"
-                    android:layout_column="0"/>
+                    android:text="乘机人："
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="30sp"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="张三"
                     android:id="@+id/textView22"
-
-                    android:textSize="35sp"
+                    android:layout_width="139dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
                     android:layout_row="0"
-                    android:layout_column="1"/>
+
+                    android:text="张三"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="35sp"/>
 
                 <ImageView
-                    android:layout_width="240dp"
-                    android:layout_height="match_parent"
-                    android:id="@+id/imageView"
-                    android:src="@drawable/you"
+                    android:id="@+id/imageView1"
+                    android:layout_width="171dp"
+                    android:layout_height="74dp"
+                    android:layout_column="2"
                     android:layout_row="0"
-                    android:layout_column="2"/>
+                    android:src="@drawable/you"/>
             </GridLayout>
 
         </LinearLayout>
@@ -65,38 +65,47 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/textView23"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="联系人："
-            android:id="@+id/textView23"
-            android:textSize="30sp" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="30sp"/>
 
         <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/editText9"
-            android:layout_weight="1" />
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="152dp"
+            android:layout_height="52dp"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:layout_weight="0.53"
+            android:src="@drawable/you"/>
 
     </LinearLayout>
 
     <ListView
+        android:id="@+id/listView3"
         android:layout_width="match_parent"
         android:layout_height="290dp"
-        android:id="@+id/listView3"
-        android:layout_weight="0.22" />
+        android:layout_weight="0.22"/>
 
     <Button
+        android:id="@+id/button3"
         android:layout_width="163dp"
         android:layout_height="wrap_content"
-        android:text="确认订票"
-        android:id="@+id/button3"
         android:layout_gravity="right"
-        android:layout_weight="0.37" />
+        android:layout_weight="0.37"
+        android:text="确认订票"/>
 
 </LinearLayout>

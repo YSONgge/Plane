@@ -18,8 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="0.13"
-            android:text="欢迎注册"
+            android:text="@string/register_welcome"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="40sp"/>
     </FrameLayout>

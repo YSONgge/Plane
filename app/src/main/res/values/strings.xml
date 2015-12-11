@@ -28,5 +28,6 @@
     <string name="reset">重置</string>
     <string name="confirm">确定</string>
     <string name="joke">注册即同意我们的所有条款（其实我们就没有）</string>
+    <string name="register_welcome">欢迎注册</string>
 
 </resources>

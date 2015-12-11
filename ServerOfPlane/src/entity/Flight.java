@@ -1,9 +1,9 @@
 package entity;
 
 public class Flight {
+	private String flightId;
 	private int originId;
 	private int destId;
-	private String flightId;
 	private String flightStartTime;
 	private String flightOrriveTime;
 	private int flightFare;
@@ -13,6 +13,21 @@ public class Flight {
 		this.originId = originId;
 		this.destId = destId;
 	}
+	
+	
+
+	public Flight(String flightId,int originId, int destId, 
+			String flightStartTime, String flightOrriveTime, int flightFare) {
+		super();
+		this.originId = originId;
+		this.destId = destId;
+		this.flightId = flightId;
+		this.flightStartTime = flightStartTime;
+		this.flightOrriveTime = flightOrriveTime;
+		this.flightFare = flightFare;
+	}
+
+
 
 	public int getOriginId() {
 		return originId;
