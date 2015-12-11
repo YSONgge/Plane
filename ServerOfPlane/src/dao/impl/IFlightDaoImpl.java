@@ -162,7 +162,7 @@ public class IFlightDaoImpl implements IFlightDao {
 		}
 	}
 	/*
-	 * ²âÊÔ´úÂë¿é
+	 * æµ‹è¯•ä»£ç å—
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -170,7 +170,7 @@ public class IFlightDaoImpl implements IFlightDao {
 		IFlightDaoImpl i2 = new IFlightDaoImpl();
 		//Flight f = new Flight((int)i1.queryAirportId(a),(int)i1.queryAirportId(b));
 		Flight f = new Flight(100100,100102);
-		System.out.println("º½°àID:\t"+i2.queryFlightId(f));
+		System.out.println("èˆªç­ID:\t"+i2.queryFlightId(f));
 		System.out.println("startTime:"+i2.queryFlightStartTime(f));
 		System.out.println("arriveTime:"+i2.queryFlightArriveTime(f));
 		System.out.println("fare:\t"+i2.queryFlightFare(f));

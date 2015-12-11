@@ -35,7 +35,7 @@ public class IAirportServiceImpl implements IAirportService {
 	 */
 	public static void main(String[] args) {
 		IAirportServiceImpl i = new IAirportServiceImpl();
-		Airport a = new Airport("±±¾©");
+		Airport a = new Airport("åŒ—äº¬");
 		System.out.println("name:\t" + i.queryAirportName(a));
 		System.out.println("phone:\t" + i.quertAirportPhone(a));
 		System.out.println("id:\t" + i.queryAirportId(a));

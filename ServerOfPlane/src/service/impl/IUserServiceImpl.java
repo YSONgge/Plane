@@ -36,7 +36,7 @@ public class IUserServiceImpl implements IUserService{
 	 */
 	public static void main(String[] args) {
 		IUserServiceImpl i = new IUserServiceImpl();
-		User u = new User("eric\t","eric");
+		User u = new User("eric","eric");
 		System.out.println("CheckExist\t"+i.checkUserExist(u));
 		System.out.println("Regist\t"+i.userRegister(u));
 		System.out.println("Login\t"+i.userLogin(u));

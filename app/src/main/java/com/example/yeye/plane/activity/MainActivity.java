@@ -1,5 +1,7 @@
 package com.example.yeye.plane.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -74,6 +76,11 @@ public class MainActivity extends AppCompatActivity implements mineFragment.OnFr
 
     }
 
+    public static void actionStart(Context context) {
+        Intent i = new Intent(context, MainActivity.class);
+        context.startActivity(i);
+    }
+
     public class CollectionPagerAdapter extends FragmentPagerAdapter {
 
         public CollectionPagerAdapter(FragmentManager fm) {
@@ -85,13 +92,13 @@ public class MainActivity extends AppCompatActivity implements mineFragment.OnFr
             Fragment fragment = null;
             switch (position) {
                 case 0:
-                    fragment = new queryFragment();
+                    fragment = queryFragment.newInstance();
                     break;
                 case 1:
-                    fragment = new orderFragment();
+                    fragment = orderFragment.newInstance();
                     break;
                 case 2:
-                    fragment = new mineFragment();
+                    fragment = mineFragment.newInstance();
                     break;
             }
             return fragment;

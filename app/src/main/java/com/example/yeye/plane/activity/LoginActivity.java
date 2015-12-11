@@ -1,5 +1,8 @@
 package com.example.yeye.plane.activity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,7 +17,11 @@ import com.example.yeye.plane.R;
 import com.example.yeye.plane.util.HttpCallbackListener;
 import com.example.yeye.plane.util.HttpUtil;
 import com.example.yeye.plane.util.IConst;
+import com.example.yeye.plane.util.LogUtil;
 import com.example.yeye.plane.util.Utility;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -24,10 +31,19 @@ public class LoginActivity extends AppCompatActivity {
     private EditText usernameEdit;
     private EditText passwordEdit;
 
+    private boolean doLogin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        doLogin = getIntent().getBooleanExtra("do_login", false);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if (!TextUtils.isEmpty(prefs.getString("username", null)) && !doLogin) {
+            MainActivity.actionStart(LoginActivity.this);
+            finish();
+            return;
+        }
         bar = getSupportActionBar();
         bar.setDisplayHomeAsUpEnabled(true);
         bar.setDisplayShowHomeEnabled(true);
@@ -75,6 +91,9 @@ public class LoginActivity extends AppCompatActivity {
                             public void run() {
                                 if (result) {
                                     Toast.makeText(LoginActivity.this, R.string.login_success, Toast.LENGTH_SHORT).show();
+                                    rememberUser(usernameEdit.getText().toString());
+                                    MainActivity.actionStart(LoginActivity.this);
+                                    finish();
                                 } else {
                                     Toast.makeText(LoginActivity.this, R.string.uname_pwd_wrong, Toast.LENGTH_SHORT).show();
                                 }
@@ -94,6 +113,17 @@ public class LoginActivity extends AppCompatActivity {
                 });
             }
         }
+    }
+
+    /**
+     * when login, remember username and login time .
+     * @param username
+     */
+    private void rememberUser(String username) {
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this).edit();
+        editor.putString("username", username);
+        editor.putString("last_login_time", new Date().toString());
+        editor.apply();
     }
 
     private class RegisterBtnClickedListener implements View.OnClickListener {
