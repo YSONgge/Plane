@@ -13,7 +13,7 @@ import org.json.JSONObject;
 import entity.User;
 import factory.Factory;
 
-public class UserRegist extends HttpServlet {
+public class UserRegister extends HttpServlet {
 
 	/**
 	 * The doGet method of the servlet. <br>
@@ -48,7 +48,7 @@ public class UserRegist extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		User u = new User(username,password);
-		boolean result = Factory.getIUserService().userRegist(u);
+		boolean result = Factory.getIUserService().userRegister(u);
 		JSONObject json = new JSONObject();
 		json.put("result", result);
 		out.write(json.toString());

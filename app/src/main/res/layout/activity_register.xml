@@ -80,7 +80,7 @@
         android:layout_weight="0.13">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/register_button"
             android:layout_width="137dp"
             android:layout_height="65dp"
             android:layout_gravity="center_horizontal|bottom"

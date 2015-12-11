@@ -5,7 +5,7 @@ import entity.User;
 public interface IUserDao {
 	public boolean checkUserExist(User u);
 
-	public boolean userRegist(User u);
+	public boolean userRegister(User u);
 
 	public boolean userLogin(User u);
 
