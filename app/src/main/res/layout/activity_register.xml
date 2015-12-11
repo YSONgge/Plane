@@ -36,7 +36,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_column="2"
+                android:layout_column="3"
                 android:text="用户名"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textSize="20dp"/>
@@ -58,7 +58,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_column="2"
+                android:layout_column="3"
                 android:text="@string/register_password"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textSize="20sp"/>

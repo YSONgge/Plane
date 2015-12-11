@@ -9,11 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity android:name=".activity.MainActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activity.PassengerActivity" >
         </activity>
@@ -28,6 +24,11 @@
         <activity android:name=".activity.ResultActivity" >
         </activity>
         <activity android:name=".activity.OrderTicketActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
