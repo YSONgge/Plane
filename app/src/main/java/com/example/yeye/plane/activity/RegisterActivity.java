@@ -1,9 +1,11 @@
 package com.example.yeye.plane.activity;
 
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
@@ -67,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
         public void onClick(View v) {
             if (TextUtils.isEmpty(username.getText()) || TextUtils.isEmpty(password.getText())) {
                 //username or password cant be null or ""
-                Toast.makeText(RegisterActivity.this, R.string.register_null_alert, Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, R.string.uname_passwd_null_alert, Toast.LENGTH_SHORT).show();
             } else {
                 String url = IConst.SERVLET_ADDR + "UserRegister";
                 String data = "username=" + username.getText() + "&" + "password=" + password.getText();
@@ -92,7 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(RegisterActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this, R.string.http_fail, Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -106,7 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
         public void onFocusChange(View v, boolean hasFocus) {
             if (hasFocus) {
                 if (TextUtils.isEmpty(username.getText())) {
-                    Toast.makeText(RegisterActivity.this, R.string.register_null_alert, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, R.string.uname_passwd_null_alert, Toast.LENGTH_SHORT).show();
                 } else {
                     String url = IConst.SERVLET_ADDR + "CheckUserExist?" + "username=" + username.getText();
                     HttpUtil.sendHttpRequest(url, "GET", null, new HttpCallbackListener() {
@@ -117,7 +119,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     if (result) {
-                                        Toast.makeText(RegisterActivity.this, "User Exists", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterActivity.this, R.string.register_user_exist, Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -128,7 +130,7 @@ public class RegisterActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(RegisterActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegisterActivity.this, R.string.http_fail, Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -136,5 +138,10 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    public static void actionStart(Context context) {
+        Intent i = new Intent(context, RegisterActivity.class);
+        context.startActivity(i);
     }
 }
