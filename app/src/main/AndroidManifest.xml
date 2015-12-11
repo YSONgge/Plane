@@ -17,7 +17,7 @@
         </activity>
         <activity android:name=".activity.ContactPersonActivity" >
         </activity>
-        <activity android:name=".activity.ChangePasswordActivity" >
+        <activity android:name=".activity.ChangePwdActivity" >
         </activity>
         <activity android:name=".activity.RegisterActivity" >
         </activity>

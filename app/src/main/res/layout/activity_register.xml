@@ -14,7 +14,7 @@
         android:layout_weight="0.32">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -33,21 +33,21 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/txt_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:text="用户名"
+                android:layout_weight="2"
+                android:text="@string/username"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="20dp"/>
+                android:textSize="20sp"/>
 
             <EditText
-                android:id="@+id/register_username"
+                android:id="@+id/edit_register_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_column="7"
+                android:layout_weight="8"
                 android:ems="10"
-                android:hint="请输您的用户名"/>
+                android:hint="@string/input_name_hint"/>
         </TableRow>
 
         <TableRow
@@ -55,19 +55,19 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/txt_pwd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:text="@string/register_password"
+                android:layout_weight="2"
+                android:text="@string/register_pwd"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textSize="20sp"/>
 
             <EditText
-                android:id="@+id/register_password"
+                android:id="@+id/edit_register_pwd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_column="7"
+                android:layout_weight="8"
                 android:ems="10"
                 android:inputType="textPassword"/>
         </TableRow>
@@ -84,7 +84,7 @@
             android:layout_width="137dp"
             android:layout_height="65dp"
             android:layout_gravity="center_horizontal|bottom"
-            android:text="注册"
+            android:text="@string/register"
             android:textSize="20sp"/>
     </FrameLayout>
 
@@ -93,6 +93,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0.13"
-        android:text="注册即同意我们的所有条款（其实我们就没有）"/>
+        android:text="@string/joke"/>
 
 </LinearLayout>

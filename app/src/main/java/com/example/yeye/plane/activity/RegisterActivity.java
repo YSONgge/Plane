@@ -22,9 +22,9 @@ import com.example.yeye.plane.util.Utility;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText username;
-    EditText password;
-    Button register;
+    EditText usernameEdit;
+    EditText passwordEdit;
+    Button registerBtn;
 
     private ActionBar bar;
 
@@ -39,12 +39,12 @@ public class RegisterActivity extends AppCompatActivity {
         bar.setHomeButtonEnabled(true);
         bar.setTitle("注册");
 
-        username = (EditText) findViewById(R.id.register_username);
-        password = (EditText) findViewById(R.id.register_password);
-        register = (Button) findViewById(R.id.register_button);
+        usernameEdit = (EditText) findViewById(R.id.edit_register_username);
+        passwordEdit = (EditText) findViewById(R.id.edit_register_pwd);
+        registerBtn = (Button) findViewById(R.id.register_button);
 
-        register.setOnClickListener(new onRegisterButtonClickListener());
-        password.setOnFocusChangeListener(new onPasswordFocusChangeListener());
+        registerBtn.setOnClickListener(new onRegisterButtonClickListener());
+        passwordEdit.setOnFocusChangeListener(new onPasswordFocusChangeListener());
     }
 
     /*
@@ -67,12 +67,12 @@ public class RegisterActivity extends AppCompatActivity {
     private class onRegisterButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            if (TextUtils.isEmpty(username.getText()) || TextUtils.isEmpty(password.getText())) {
+            if (TextUtils.isEmpty(usernameEdit.getText()) || TextUtils.isEmpty(passwordEdit.getText())) {
                 //username or password cant be null or ""
-                Toast.makeText(RegisterActivity.this, R.string.uname_passwd_null_alert, Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, R.string.uname_pwd_null_alert, Toast.LENGTH_SHORT).show();
             } else {
                 String url = IConst.SERVLET_ADDR + "UserRegister";
-                String data = "username=" + username.getText() + "&" + "password=" + password.getText();
+                String data = "username=" + usernameEdit.getText() + "&" + "password=" + passwordEdit.getText();
                 HttpUtil.sendHttpRequest(url, "POST", data, new HttpCallbackListener() {
                     @Override
                     public void onFinish(String response) {
@@ -107,10 +107,10 @@ public class RegisterActivity extends AppCompatActivity {
         @Override
         public void onFocusChange(View v, boolean hasFocus) {
             if (hasFocus) {
-                if (TextUtils.isEmpty(username.getText())) {
-                    Toast.makeText(RegisterActivity.this, R.string.uname_passwd_null_alert, Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(usernameEdit.getText())) {
+                    Toast.makeText(RegisterActivity.this, R.string.uname_pwd_null_alert, Toast.LENGTH_SHORT).show();
                 } else {
-                    String url = IConst.SERVLET_ADDR + "CheckUserExist?" + "username=" + username.getText();
+                    String url = IConst.SERVLET_ADDR + "CheckUserExist?" + "username=" + usernameEdit.getText();
                     HttpUtil.sendHttpRequest(url, "GET", null, new HttpCallbackListener() {
                         @Override
                         public void onFinish(String response) {
