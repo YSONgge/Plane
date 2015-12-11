@@ -1,14 +1,25 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.example.yeye.plane.fragment.mineFragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:weightSum="1"
+              tools:context="com.example.yeye.plane.fragment.mineFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
     <Button
+        android:id="@+id/btn_change_pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="修改密码"
-        android:id="@+id/button2"
-        android:layout_gravity="center"
-        android:onClick="changePass"/>
-</FrameLayout>
+        android:onClick="changePass"
+        android:text="修改密码"/>
+
+    <Button
+        android:id="@+id/btn_airplane_en"
+        android:layout_width="123dp"
+        android:layout_height="116dp"
+        android:layout_gravity="center_horizontal"
+        android:text="机场宝典"
+        />
+</LinearLayout>

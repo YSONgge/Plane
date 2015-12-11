@@ -31,6 +31,8 @@ public class queryFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    private View view;
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -66,7 +68,10 @@ public class queryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_query, container, false);
+        view = inflater.inflate(R.layout.fragment_query, container, false);
+
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

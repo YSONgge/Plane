@@ -8,11 +8,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.Button;
 
 import com.example.yeye.plane.R;
+import com.example.yeye.plane.activity.AirplaneEnActivity;
 import com.example.yeye.plane.activity.ChangePasswordActivity;
+import com.example.yeye.plane.activity.LoginActivity;
 
 
 /**
@@ -33,7 +34,8 @@ public class mineFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private Button changePass;
+    private View view;
+    private Button changePass, airportEn;
 
     private OnFragmentInteractionListener mListener;
 
@@ -73,8 +75,28 @@ public class mineFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mine, container, false);
+        view = inflater.inflate(R.layout.fragment_mine, container, false);
+        changePass = (Button) view.findViewById(R.id.btn_change_pass);
+        airportEn = (Button) view.findViewById(R.id.btn_airplane_en);
+
+        changePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ChangePasswordActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        airportEn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), AirplaneEnActivity.class);
+                startActivity(intent);
+            }
+        });
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -82,6 +104,8 @@ public class mineFragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
+
+
     }
 
     @Override
