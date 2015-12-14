@@ -37,7 +37,7 @@ public class IAirportDaoImpl implements IAirportDao {
 
 	}
 
-	public long quertAirportPhone(Airport a) {
+	public long queryAirportPhone(Airport a) {
 		Connection conn = new ConnectionOracle().getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

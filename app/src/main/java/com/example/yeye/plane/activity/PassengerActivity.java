@@ -35,6 +35,7 @@ public class PassengerActivity extends AppCompatActivity {
             }
         });
 
+        // TODO: 2015/12/11 机票类型未完成
 
         bar = getSupportActionBar();
          bar.setDisplayHomeAsUpEnabled(true);

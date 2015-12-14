@@ -26,6 +26,27 @@
     <servlet-name>CheckUserExist</servlet-name>
     <servlet-class>servlet.CheckUserExist</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>QueryFlight</servlet-name>
+    <servlet-class>servlet.QueryFlight</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Airport</servlet-name>
+    <servlet-class>servlet.Airport</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>TicketOrder</servlet-name>
+    <servlet-class>servlet.TicketOrder</servlet-class>
+  </servlet>
+
+
+
 
 
 
@@ -45,6 +66,18 @@
   <servlet-mapping>
     <servlet-name>CheckUserExist</servlet-name>
     <url-pattern>/servlet/CheckUserExist</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryFlight</servlet-name>
+    <url-pattern>/servlet/QueryFlight</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Airport</servlet-name>
+    <url-pattern>/servlet/Airport</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TicketOrder</servlet-name>
+    <url-pattern>/servlet/TicketOrder</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

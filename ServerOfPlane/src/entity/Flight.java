@@ -4,30 +4,54 @@ public class Flight {
 	private String flightId;
 	private int originId;
 	private int destId;
+	private String origin;
+	private String dest;
+	private String flightDate;
 	private String flightStartTime;
-	private String flightOrriveTime;
+	private String flightArriveTime;
 	private int flightFare;
 
-	public Flight(int originId, int destId) {
+	public Flight(String origin, String dest, String flightDate) {
 		super();
-		this.originId = originId;
-		this.destId = destId;
+		this.origin = origin;
+		this.dest = dest;
+		this.flightDate = flightDate;
 	}
-	
-	
 
-	public Flight(String flightId,int originId, int destId, 
+	public Flight(String flightId, int originId, int destId,
 			String flightStartTime, String flightOrriveTime, int flightFare) {
 		super();
 		this.originId = originId;
 		this.destId = destId;
 		this.flightId = flightId;
 		this.flightStartTime = flightStartTime;
-		this.flightOrriveTime = flightOrriveTime;
+		this.flightArriveTime = flightOrriveTime;
 		this.flightFare = flightFare;
 	}
 
+	public String getFlightDate() {
+		return flightDate;
+	}
 
+	public void setFlightDate(String flightDate) {
+		this.flightDate = flightDate;
+	}
+
+	public String getOrigin() {
+		return origin;
+	}
+
+	public void setOrigin(String origin) {
+		this.origin = origin;
+	}
+
+	public String getDest() {
+		return dest;
+	}
+
+	public void setDest(String dest) {
+		this.dest = dest;
+	}
 
 	public int getOriginId() {
 		return originId;
@@ -62,11 +86,11 @@ public class Flight {
 	}
 
 	public String getFlightOrriveTime() {
-		return flightOrriveTime;
+		return flightArriveTime;
 	}
 
 	public void setFlightOrriveTime(String flightOrriveTime) {
-		this.flightOrriveTime = flightOrriveTime;
+		this.flightArriveTime = flightOrriveTime;
 	}
 
 	public int getFlightFare() {

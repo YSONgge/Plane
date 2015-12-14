@@ -12,8 +12,7 @@ import android.widget.Button;
 
 import com.example.yeye.plane.R;
 import com.example.yeye.plane.activity.AirplaneEnActivity;
-import com.example.yeye.plane.activity.ChangePasswordActivity;
-import com.example.yeye.plane.activity.LoginActivity;
+import com.example.yeye.plane.activity.ChangePwdActivity;
 
 
 /**
@@ -84,7 +83,7 @@ public class mineFragment extends Fragment {
         changePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ChangePasswordActivity.class);
+                Intent intent = new Intent(getContext(), ChangePwdActivity.class);
                 startActivity(intent);
             }
         });
