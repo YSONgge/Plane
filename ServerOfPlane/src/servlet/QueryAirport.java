@@ -10,10 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
+import entity.Airport;
 import factory.Factory;
 
 
-public class Airport extends HttpServlet {
+public class QueryAirport extends HttpServlet {
 
 	/**
 	 * The doGet method of the servlet. <br>
@@ -52,15 +53,13 @@ public class Airport extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		//String aName = new String(request.getParameter("aName").getBytes("ISO-8895-1"),"UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
+		//need set tomcat conf/server.xml <Connector> useBodyEncodingForURI=true
+		PrintWriter out = response.getWriter();
 		String aName = request.getParameter("aName");
-		System.out.println(aName);
-		entity.Airport a  = new entity.Airport(aName);
+		Airport a  = new Airport(aName);
 		Long aNumber = Factory.getIAirportService().queryAirportPhone(a);
-		System.out.println(aNumber);
 		JSONObject json = new JSONObject();
 		json.put("aNumber", aNumber);
 		out.write(json.toString());

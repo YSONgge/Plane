@@ -41,6 +41,7 @@ public class ITicketDaoImpl implements ITicketDao {
 				pstmt.setLong(1, orderId);
 				pstmt.setString(2, p.getName());
 				pstmt.setString(3, p.getCardNumber());
+				//TODO: fix hard code
 				pstmt.setString(4, "商务舱");
 				pstmt.setString(5, "航意险");
 				pstmt.setString(6, c.getName());
@@ -112,15 +113,25 @@ public class ITicketDaoImpl implements ITicketDao {
 						pInsurance, cName, cPhone, cEmail, UId, flightId);
 
 				ticket.add(t);
-				System.out.println(t.getcEmail());
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			LogUtil.e(e);
 		} finally {
 			close(conn, pstmt, null);
 		}
 		return ticket;
+	}
+	
+	public void clear(){
+		Connection conn = new ConnectionOracle().getConnection();
+		PreparedStatement pstmt = null;
+		String sql = "delete from pticket";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.execute(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {
@@ -137,5 +148,12 @@ public class ITicketDaoImpl implements ITicketDao {
 		} catch (SQLException e) {
 			LogUtil.e(e);
 		}
+	}
+	/**
+	 * ----------Clear test data. BE CAREFUL!--------
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		new ITicketDaoImpl().clear();
 	}
 }

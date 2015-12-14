@@ -32,7 +32,6 @@ public class IAirportDaoImpl implements IAirportDao {
 				aId = Long.parseLong(tmp);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			LogUtil.e(e);
 		} finally {
 			close(conn, pstmt, null);
@@ -57,7 +56,6 @@ public class IAirportDaoImpl implements IAirportDao {
 				aPhone = Long.parseLong(tmp);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			LogUtil.e(e);
 		} finally {
 			close(conn, pstmt, null);
@@ -82,7 +80,6 @@ public class IAirportDaoImpl implements IAirportDao {
 
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			LogUtil.e(e);
 		} finally {
 			close(conn, pstmt, null);

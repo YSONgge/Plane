@@ -52,7 +52,7 @@ public class ChangePW extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html");
+		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		//need set tomcat conf/server.xml <Connector> useBodyEncodingForURI=true
 		PrintWriter out = response.getWriter();

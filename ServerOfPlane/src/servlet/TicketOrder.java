@@ -57,7 +57,10 @@ public class TicketOrder extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html");
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		//need set tomcat conf/server.xml <Connector> useBodyEncodingForURI=true
+		
 		PrintWriter out = response.getWriter();
 		long orderId = Long.parseLong(request.getParameter("orderId"));
 		
@@ -84,8 +87,8 @@ public class TicketOrder extends HttpServlet {
 			for(Ticket t:ticket){
 				jsonArray.put(t.getJsonObject());
 			}
-			
-			
+		}else{
+			//TODO: complete
 		}
 		out.write(jsonArray.toString());
 		out.flush();
