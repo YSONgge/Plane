@@ -66,10 +66,9 @@ public class QueryFlight extends HttpServlet {
 		String flightDate = request.getParameter("flightDate");
 
 		JSONArray jsonArray = new JSONArray();
-		List<Flight> flight = Factory.getIFlightService().selectFlight(origin,dest, flightDate);
-		
-		jsonArray = new JSONArray();
-		
+		List<Flight> flight = Factory.getIFlightService().selectFlight(origin,dest, flightDate);			
+		jsonArray = new JSONArray();		
+		System.out.println("size"+flight.size());
 		for(Flight f:flight){
 			jsonArray.put(f.getJsonObject());
 		}

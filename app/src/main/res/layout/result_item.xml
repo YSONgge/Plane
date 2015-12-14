@@ -30,7 +30,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Small Text"
-                    android:id="@+id/textView25"/>
+                    android:id="@+id/txt_result_origin"/>
             </LinearLayout>
 
             <ImageView
@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Small Text"
-                    android:id="@+id/textView26"/>
+                    android:id="@+id/txt_result_dest"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Medium Text"
-            android:id="@+id/textView28"/>
+            android:id="@+id/txt_result_airportId"/>
     </LinearLayout>
 
     <FrameLayout
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
-            android:id="@+id/textView24"
+            android:id="@+id/txt_result_pare"
             android:layout_gravity="center"/>
     </FrameLayout>
 </LinearLayout>

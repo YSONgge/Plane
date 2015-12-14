@@ -34,15 +34,13 @@ public class Flight {
 	public JSONObject getJsonObject(){
 		JSONObject json = new JSONObject();
 		json.put("flightId", flightId);
-		json.put("origin", origin);
-		json.put("dest", dest);
+		json.put("originId", originId);
+		json.put("destId", destId);
 		json.put("flightDate", flightDate);
 		json.put("flightStartTime", flightStartTime);
 		json.put("flightArriveTime", flightArriveTime);
 		json.put("flightFare", flightFare);
-
-			
-		
+	
 		return json;
 	}
 

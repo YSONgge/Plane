@@ -44,14 +44,14 @@
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <EditText
-                android:id="@+id/editText7"
+                android:id="@+id/edit_query_origin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.89" />
 
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btn_query_convert"
+                android:layout_width="52dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/refush" />
 
@@ -63,7 +63,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <EditText
-                android:id="@+id/editText8"
+                android:id="@+id/edit_query_dest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
@@ -88,12 +88,12 @@
             android:layout_height="31dp"
             android:layout_weight="0.36">
 
-            <ImageButton
+            <Button
                 android:layout_width="132dp"
                 android:layout_height="52dp"
-                android:id="@+id/imageButton2"
+                android:id="@+id/btn_query_query"
                 android:layout_gravity="center"
-                android:src="@drawable/sousuo"/>
+                android:background="@drawable/sousuo"/>
         </FrameLayout>
 
     </LinearLayout>

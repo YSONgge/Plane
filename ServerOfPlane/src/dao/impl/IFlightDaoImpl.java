@@ -21,7 +21,7 @@ public class IFlightDaoImpl implements IFlightDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		
+		System.out.println("nonononon");
 		//TODO:date has not done
 		String sql = "select * from Flight f where f.origin_id=(select a_id from airport where a_location = ?) and f.dest_id=(select a_id from airport where a_location = ?)";
 
@@ -30,7 +30,10 @@ public class IFlightDaoImpl implements IFlightDao {
 			pstmt.setString(1,origin);
 			pstmt.setString(2, dest);
 			rs = pstmt.executeQuery();
+			System.out.println("yeyeey");
+			System.out.println(origin);
 			while (rs.next()) {
+				System.out.println("ononoono");
 				String fId = rs.getString(1);
 				int originId = rs.getInt(2);
 				int destId = rs.getInt(3);
@@ -40,6 +43,7 @@ public class IFlightDaoImpl implements IFlightDao {
 				Flight f1 = new Flight(fId, originId, destId, flightStartTime,
 						flightArriveTime, flightFare);
 				flight.add(f1);
+				System.out.println(f1.getFlightDate());
 			}
 		} catch (Exception e) {
 			
