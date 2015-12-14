@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -44,9 +45,13 @@ public class UserRegister extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
+		request.setCharacterEncoding("UTF-8");
+		//need set tomcat conf/server.xml <Connector> useBodyEncodingForURI=true
 		PrintWriter out = response.getWriter();
+		System.out.println(request.getHeader("content-type"));
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		System.out.println(username);
 		User u = new User(username,password);
 		boolean result = Factory.getIUserService().userRegister(u);
 		JSONObject json = new JSONObject();

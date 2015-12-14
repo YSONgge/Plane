@@ -29,6 +29,7 @@ public class CheckUserExist extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
+		request.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		User u = new User(request.getParameter("username"), null);
 		boolean flag = Factory.getIUserService().checkUserExist(u);

@@ -15,3 +15,4 @@ public interface IFlightDao {
 	
 	public List<Flight> selectFlight(String origin, String dest, String flightDate);
 }
+
