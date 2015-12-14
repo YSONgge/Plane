@@ -79,7 +79,12 @@ public class TicketOrder extends HttpServlet {
 		JSONArray jsonArray = new JSONArray();
 		if(flag==true){
 			List<Ticket> ticket = Factory.getITicketService().queryTicketContent(uId);
-			jsonArray = new JSONArray(ticket);
+			jsonArray = new JSONArray();
+			
+			for(Ticket t:ticket){
+				jsonArray.put(t.getJsonObject());
+			}
+			
 			
 		}
 		out.write(jsonArray.toString());

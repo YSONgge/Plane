@@ -112,6 +112,7 @@ public class ITicketDaoImpl implements ITicketDao {
 						pInsurance, cName, cPhone, cEmail, UId, flightId);
 
 				ticket.add(t);
+				System.out.println(t.getcEmail());
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -119,7 +120,7 @@ public class ITicketDaoImpl implements ITicketDao {
 		} finally {
 			close(conn, pstmt, null);
 		}
-		return null;
+		return ticket;
 	}
 
 	private void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {

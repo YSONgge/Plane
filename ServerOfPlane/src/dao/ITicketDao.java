@@ -7,7 +7,7 @@ package dao;
 import java.util.List;
 
 import entity.ContactPerson;
-import entity.Flight;
+
 import entity.Passenger;
 import entity.Ticket;
 

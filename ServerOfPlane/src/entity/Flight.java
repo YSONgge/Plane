@@ -1,5 +1,7 @@
 package entity;
 
+import org.json.JSONObject;
+
 public class Flight {
 	private String flightId;
 	private int originId;
@@ -27,6 +29,21 @@ public class Flight {
 		this.flightStartTime = flightStartTime;
 		this.flightArriveTime = flightOrriveTime;
 		this.flightFare = flightFare;
+	}
+	 
+	public JSONObject getJsonObject(){
+		JSONObject json = new JSONObject();
+		json.put("flightId", flightId);
+		json.put("origin", origin);
+		json.put("dest", dest);
+		json.put("flightDate", flightDate);
+		json.put("flightStartTime", flightStartTime);
+		json.put("flightArriveTime", flightArriveTime);
+		json.put("flightFare", flightFare);
+
+			
+		
+		return json;
 	}
 
 	public String getFlightDate() {

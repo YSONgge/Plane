@@ -7,6 +7,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.sun.xml.internal.bind.v2.TODO;
+
 import util.LogUtil;
 import db.ConnectionOracle;
 
@@ -17,6 +20,7 @@ public class IAirportDaoImpl implements IAirportDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		long aId = 0;
+
 
 		String sql = "select * from Airport where a_location=?";
 		try {

@@ -62,7 +62,7 @@ public class Airport extends HttpServlet {
 		Long aNumber = Factory.getIAirportService().queryAirportPhone(a);
 		System.out.println(aNumber);
 		JSONObject json = new JSONObject();
-		json.put("result", aNumber);
+		json.put("aNumber", aNumber);
 		out.write(json.toString());
 		out.flush();
 		out.close();
