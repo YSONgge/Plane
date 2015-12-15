@@ -36,8 +36,7 @@ public class Utility {
             flag = jsonObject.getBoolean("result");
         } catch (JSONException e) {
             e.printStackTrace();
-            //// TODO: 2015/12/10 confirm error message
-            LogUtil.e(TAG, e.getMessage());
+            LogUtil.e(TAG, e.toString());
         }
         return flag;
     }
@@ -51,7 +50,7 @@ public class Utility {
             number = jsonObject.getString("aNumber");
         } catch (JSONException e) {
             e.printStackTrace();
-            LogUtil.e(TAG, e.getMessage());
+            LogUtil.e(TAG, e.toString());
         }
         return number;
     }
@@ -74,7 +73,7 @@ public class Utility {
             }
         } catch (JSONException e) {
             e.printStackTrace();
-            LogUtil.e(TAG, e.getMessage());
+            LogUtil.e(TAG, e.toString());
         }
         return list;
     }
@@ -100,8 +99,23 @@ public class Utility {
             }
         } catch (JSONException e) {
             e.printStackTrace();
-            LogUtil.e("handleOrderListResponse", e.getMessage());
+            LogUtil.e("handleOrderListResponse", e.toString());
         }
         return list;
     }
+
+    public static String handleWeatherResponse(String response) {
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            LogUtil.i("TAG", response);
+            LogUtil.i("TAG", jsonObject.getString("errMsg"));
+            String unicode = jsonObject.getJSONObject("retData").getString("weather");
+            return unicode;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            LogUtil.e("WeatherResponse", e.toString());
+        }
+        return "";
+    }
+
 }

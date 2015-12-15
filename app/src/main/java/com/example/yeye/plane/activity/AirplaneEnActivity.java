@@ -2,6 +2,7 @@ package com.example.yeye.plane.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +14,11 @@ import com.example.yeye.plane.R;
 import com.example.yeye.plane.util.HttpCallbackListener;
 import com.example.yeye.plane.util.HttpUtil;
 import com.example.yeye.plane.util.IConst;
+import com.example.yeye.plane.util.LogUtil;
 import com.example.yeye.plane.util.Utility;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 public class AirplaneEnActivity extends AppCompatActivity {
 
@@ -35,7 +40,7 @@ public class AirplaneEnActivity extends AppCompatActivity {
         queryAirport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (cityName.getText() != null) {
+                if (!TextUtils.isEmpty(cityName.getText())) {
                     String url = IConst.SERVLET_ADDR + "QueryAirport";
                     String data = "aName=" + cityName.getText();
                     // String phoneNumber = null;
@@ -47,7 +52,6 @@ public class AirplaneEnActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     airportPhone.setText(phoneNumber);
-                                    airportWeather.setText("多云");
                                 }
                             });
                         }
@@ -60,6 +64,31 @@ public class AirplaneEnActivity extends AppCompatActivity {
                                     Toast.makeText(AirplaneEnActivity.this, R.string.http_fail, Toast.LENGTH_SHORT).show();
                                 }
                             });
+                        }
+                    });
+                    try {
+                        url = IConst.WEATHER_ADDR + URLEncoder.encode(cityName.getText().toString(), "UTF-8");
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                        LogUtil.e("getURL", e.toString());
+                    }
+                    HttpUtil.sendHttpRequest(url, "GET", null, new HttpCallbackListener() {
+                        @Override
+                        public void onFinish(String response) {
+                            final String weather = Utility.handleWeatherResponse(response);
+                            LogUtil.i("TAG", weather + "h");
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    airportWeather.setText(weather);
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onError(Exception e) {
+                            e.printStackTrace();
+                            LogUtil.e("weather", e.toString());
                         }
                     });
                 } else {

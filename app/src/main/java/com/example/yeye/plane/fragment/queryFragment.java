@@ -30,22 +30,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.SimpleFormatter;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link queryFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link queryFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class queryFragment extends Fragment implements View.OnClickListener {
-
-    private OnFragmentInteractionListener mListener;
 
     private View view;
     private EditText origin, dest;
@@ -100,26 +92,40 @@ public class queryFragment extends Fragment implements View.OnClickListener {
             Toast.makeText(getContext(), "始发地目的地不能为空", Toast.LENGTH_LONG).show();
             return;
         }
+        Calendar c = Calendar.getInstance();
+        c.set(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(c.getTime());
         switch (v.getId()) {
             case (R.id.btn_query_convert):
-                    String temp = origin.getText().toString();
-                    origin.setText(dest.getText());
-                    dest.setText(temp);
+                String temp = origin.getText().toString();
+                origin.setText(dest.getText());
+                dest.setText(temp);
                 break;
             case R.id.btn_query_query:
                 String url = IConst.SERVLET_ADDR + "QueryFlight";
                 String data = "origin=" + origin.getText() + "&" +
                         "dest=" + dest.getText() + "&" +
-                        "flightDate=" + null;//// TODO: 2015/12/15 null
+                        "flightDate=" + date;
                 HttpUtil.sendHttpRequest(url, "POST", data, new HttpCallbackListener() {
                             @Override
                             public void onFinish(String response) {
                                 List<Map<String, String>> list = Utility.handleTicketResultResponse(response);
-                                Intent intent = new Intent(getContext(), ResultActivity.class);
-                                intent.putExtra("list", (Serializable) list);
-                                intent.putExtra("origin", origin.getText().toString());
-                                intent.putExtra("dest", dest.getText().toString());
-                                startActivity(intent);
+                                if (list.size() > 0) {
+                                    Intent intent = new Intent(getContext(), ResultActivity.class);
+                                    intent.putExtra("list", (Serializable) list);
+                                    intent.putExtra("origin", origin.getText().toString());
+                                    intent.putExtra("dest", dest.getText().toString());
+                                    startActivity(intent);
+                                } else {
+                                    getActivity().runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(getContext(), R.string.no_flight, Toast.LENGTH_SHORT).show();
+
+                                        }
+                                    });
+                                }
                             }
 
                             @Override
@@ -137,48 +143,6 @@ public class queryFragment extends Fragment implements View.OnClickListener {
                 );
                 break;
         }
-    }
-
-
-    // TODO: Rename method, update argument and hook method into UI event
-
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            mListener = (OnFragmentInteractionListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
     }
 
 }

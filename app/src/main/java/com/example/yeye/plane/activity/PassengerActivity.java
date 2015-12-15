@@ -66,7 +66,7 @@ public class PassengerActivity extends AppCompatActivity {
                         jsonObject.put("safe", safe.isChecked());
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        LogUtil.e("PassengerActivity", e.getMessage());
+                        LogUtil.e("PassengerActivity", e.toString());
                     }
                     intent.putExtra("passenger", jsonObject.toString());
                     PassengerActivity.this.setResult(0, intent);

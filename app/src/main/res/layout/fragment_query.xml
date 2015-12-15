@@ -3,88 +3,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="left|top"
+    android:layout_gravity="start"
     android:orientation="vertical"
-    android:weightSum="1"
     tools:context="com.example.yeye.plane.fragment.queryFragment">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.22">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="机票预订"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="40sp"/>
-    </FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/search_title"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="40sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.07"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="   从"
-            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
         <EditText
             android:id="@+id/edit_query_origin"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.89"/>
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="@string/from"
+            android:maxLength="8"/>
 
         <Button
             android:id="@+id/btn_query_convert"
-            android:layout_width="52dp"
-            android:layout_height="wrap_content"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
             android:background="@drawable/refush"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="   到"
-            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
         <EditText
             android:id="@+id/edit_query_dest"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="@string/dest"
+            android:maxLength="8"/>
     </LinearLayout>
 
     <TextView
-        android:layout_width="170dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.05"
-        android:text="   出发日期"
+        android:text="@string/start_date"
         android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <DatePicker
         android:id="@+id/datePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="108dp"
-        android:layout_margin="@dimen/activity_vertical_margin"/>
-
-    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="31dp"
-        android:layout_weight="0.36">
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:layout_weight="3"
+        android:calendarViewShown="false"/>
 
-        <Button
-            android:id="@+id/btn_query_query"
-            android:layout_width="132dp"
-            android:layout_height="52dp"
-            android:layout_gravity="center"
-            android:background="@drawable/sousuo"/>
-    </FrameLayout>
+    <Button
+        android:id="@+id/btn_query_query"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@android:color/holo_orange_dark"
+        android:text="@string/search"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"/>
 
 </LinearLayout>

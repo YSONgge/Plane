@@ -26,21 +26,23 @@ public class IFlightDaoImpl implements IFlightDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		// TODO:date has not done
-		String sql = "select flight_id, origin_id, dest_id, to_char(start_time,'yyyy-mm-dd hh24:mi'), to_char(arrive_time,'yyyy-mm-dd hh24:mi'), fare"
-				+ " from Flight f where f.origin_id=(select a_id from airport where a_location = ?) and "
-				+ "f.dest_id="
-				+ "(select a_id from airport where a_location = ?)";
+		String sql = "select flight_id, origin_id, dest_id, to_char(start_time,'yyyy-mm-dd hh24:mi'), to_char(arrive_time,'yyyy-mm-dd hh24:mi'), fare "
+				+ "from Flight f "
+				+ "where "
+				+ "f.origin_id=(select a_id from airport where a_location = ?) "
+				+ "and "
+				+ "f.dest_id=(select a_id from airport where a_location = ?) "
+				+ "and " + "to_date(?,'yyyy-mm-dd')<f.start_time";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, origin);
 			pstmt.setString(2, dest);
+			pstmt.setString(3, flightDate);
 			rs = pstmt.executeQuery();
 			System.out.println("yeyeey");
 			System.out.println(origin);
 			while (rs.next()) {
-				System.out.println("ononoono");
 				String fId = rs.getString(1);
 				int originId = rs.getInt(2);
 				int destId = rs.getInt(3);

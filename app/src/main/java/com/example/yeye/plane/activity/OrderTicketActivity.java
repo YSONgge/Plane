@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -31,14 +30,14 @@ import java.util.Map;
 public class OrderTicketActivity extends AppCompatActivity {
 
 
-    private ImageView imageView1, imageView2;
-    private TextView name1;
-    private EditText name2;
+    private ImageView addPassengerImg, addContactImg;
+    private TextView passengerName;
+    private TextView contactName;
     private Button submit;
     private Contact contact = null;
     private JSONObject passengerjson = null;
     private ListView listView;
-    Map<String, String> map;
+    private Map<String, String> map;
     private String username;
 
     @Override
@@ -46,10 +45,10 @@ public class OrderTicketActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_ticket);
 
-        imageView1 = (ImageView) findViewById(R.id.imageView1);
-        imageView2 = (ImageView) findViewById(R.id.imageView2);
-        name1 = (TextView) findViewById(R.id.textView22);
-        name2 = (EditText) findViewById(R.id.editText9);
+        addPassengerImg = (ImageView) findViewById(R.id.imageView_add_passenger);
+        addContactImg = (ImageView) findViewById(R.id.imageView_add_contact);
+        passengerName = (TextView) findViewById(R.id.txt_passenger_name);
+        contactName = (TextView) findViewById(R.id.txt_contact_name);
         submit = (Button) findViewById(R.id.btn_submit);
         listView = (ListView) findViewById(R.id.lv_flight);
 
@@ -61,14 +60,14 @@ public class OrderTicketActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
 
-        imageView1.setOnClickListener(new View.OnClickListener() {
+        addPassengerImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(OrderTicketActivity.this, PassengerActivity.class);
                 startActivityForResult(i, 0);
             }
         });
-        imageView2.setOnClickListener(new View.OnClickListener() {
+        addContactImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(OrderTicketActivity.this, ContactPersonActivity.class);
@@ -92,17 +91,15 @@ public class OrderTicketActivity extends AppCompatActivity {
                 String passenger = data.getStringExtra("passenger");
                 try {
                     passengerjson = new JSONObject(passenger);
-                    name1.setText(passengerjson.getString("name"));
+                    passengerName.setText(passengerjson.getString("name"));
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    LogUtil.e("passengerJson", e.getMessage());
+                    LogUtil.e("passengerJson", e.toString());
                 }
             } else if (requestCode == 1 && resultCode == 1) {
                 contact = (Contact) data.getSerializableExtra("contact");
-                name2.setText(contact.getName());
+                contactName.setText(contact.getName());
             }
-            //super.onActivityResult(requestCode, resultCode, data);
-
         }
     }
 

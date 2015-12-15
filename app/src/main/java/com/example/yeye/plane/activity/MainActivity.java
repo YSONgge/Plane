@@ -18,7 +18,7 @@ import com.example.yeye.plane.fragment.orderFragment;
 import com.example.yeye.plane.fragment.queryFragment;
 import com.example.yeye.plane.util.LogUtil;
 
-public class MainActivity extends AppCompatActivity implements mineFragment.OnFragmentInteractionListener, queryFragment.OnFragmentInteractionListener, orderFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements mineFragment.OnFragmentInteractionListener{
 
     static final int NUM_ITEMS = 3;
     CollectionPagerAdapter mPagerAdapter;

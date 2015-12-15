@@ -45,7 +45,7 @@ public class HttpUtil {
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    LogUtil.e("HTTPUtil",e.getMessage());//// TODO: 2015/12/15 e.getMessage null
+                    LogUtil.e("HTTPUtil", e.toString());//// TODO: 2015/12/15 e.getMessage null
                     if (listener != null)
                         listener.onError(e);
                 } finally {
@@ -74,7 +74,7 @@ public class HttpUtil {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            LogUtil.e("HttpUtil", e.getMessage());
+            LogUtil.e("HttpUtil", e.toString());
         }
     }
 }
