@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.example.yeye.plane.entity.Flight;
 import com.example.yeye.plane.util.HttpCallbackListener;
 import com.example.yeye.plane.util.HttpUtil;
 import com.example.yeye.plane.util.IConst;
+import com.example.yeye.plane.util.LogUtil;
 import com.example.yeye.plane.util.Utility;
 
 import org.json.JSONArray;
@@ -88,48 +90,48 @@ public class queryFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initComponent() {
-
-
         convert.setOnClickListener(this);
         query.setOnClickListener(this);
-
     }
 
     @Override
     public void onClick(View v) {
-        switch (view.getId()) {
+        if (TextUtils.isEmpty(origin.getText()) || TextUtils.isEmpty(dest.getText())) {
+            Toast.makeText(getContext(), "始发地目的地不能为空", Toast.LENGTH_LONG).show();
+            return;
+        }
+        switch (v.getId()) {
             case (R.id.btn_query_convert):
-                if (origin != null && dest != null) {
                     String temp = origin.getText().toString();
                     origin.setText(dest.getText());
                     dest.setText(temp);
-                } else {
-                    Toast.makeText(getContext(), "不可为空", Toast.LENGTH_LONG).show();
-                }
                 break;
             case R.id.btn_query_query:
-                String url = IConst.SERVLET_ADDR + "QueryFLight";
-                String data = "origin=" + origin.getText() + "&" + "dest=" + dest.getText() + "&" + "flightDate=" + null;
+                String url = IConst.SERVLET_ADDR + "QueryFlight";
+                String data = "origin=" + origin.getText() + "&" +
+                        "dest=" + dest.getText() + "&" +
+                        "flightDate=" + null;//// TODO: 2015/12/15 null
                 HttpUtil.sendHttpRequest(url, "POST", data, new HttpCallbackListener() {
                             @Override
                             public void onFinish(String response) {
-                                List<Map<String,String>> list = Utility.handleTicketResultResponse(response);
-
-
+                                List<Map<String, String>> list = Utility.handleTicketResultResponse(response);
                                 Intent intent = new Intent(getContext(), ResultActivity.class);
                                 intent.putExtra("list", (Serializable) list);
-
                                 intent.putExtra("origin", origin.getText().toString());
                                 intent.putExtra("dest", dest.getText().toString());
                                 startActivity(intent);
-
                             }
 
                             @Override
                             public void onError(Exception e) {
-                                Toast.makeText(getContext(), R.string.http_fail, Toast.LENGTH_SHORT).show();
-                            }
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(getContext(), R.string.http_fail, Toast.LENGTH_SHORT).show();
 
+                                    }
+                                });
+                            }
                         }
 
                 );

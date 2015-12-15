@@ -16,6 +16,7 @@ import com.example.yeye.plane.R;
 import com.example.yeye.plane.fragment.mineFragment;
 import com.example.yeye.plane.fragment.orderFragment;
 import com.example.yeye.plane.fragment.queryFragment;
+import com.example.yeye.plane.util.LogUtil;
 
 public class MainActivity extends AppCompatActivity implements mineFragment.OnFragmentInteractionListener,queryFragment.OnFragmentInteractionListener,orderFragment.OnFragmentInteractionListener {
 
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements mineFragment.OnFr
         mPagerAdapter = new CollectionPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mPagerAdapter);
-        mViewPager.setOnPageChangeListener(
+        mViewPager.addOnPageChangeListener(
                 new ViewPager.SimpleOnPageChangeListener() {
                     @Override
                     public void onPageSelected(int position) {
@@ -72,6 +73,13 @@ public class MainActivity extends AppCompatActivity implements mineFragment.OnFr
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //// TODO: 2015/12/14 what if not clear?
+        mViewPager.clearOnPageChangeListeners();
+    }
+
+    @Override
     public void onFragmentInteraction(Uri uri) {
 
     }
@@ -89,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements mineFragment.OnFr
 
         @Override
         public Fragment getItem(int position) {
+            LogUtil.d("FragmentPagerAdapter", position+"");
             Fragment fragment = null;
             switch (position) {
                 case 0:

@@ -15,6 +15,7 @@ import java.util.Arrays;
  */
 public class HttpUtil {
     public static void sendHttpRequest(final String address, final String method, final String data, final HttpCallbackListener listener) {
+        LogUtil.d("address", address);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -42,6 +43,8 @@ public class HttpUtil {
                         listener.onFinish(response.toString());
                     }
                 } catch (Exception e) {
+                    e.printStackTrace();
+                    LogUtil.e("HTTPUtil",e.getMessage());//// TODO: 2015/12/15 e.getMessage null
                     if (listener != null)
                         listener.onError(e);
                 } finally {

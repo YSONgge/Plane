@@ -29,5 +29,9 @@
     <string name="confirm">确定</string>
     <string name="joke">注册即同意我们的所有条款（其实我们就没有）</string>
     <string name="register_welcome">欢迎注册</string>
+    <string name="add_contact">添加联系人</string>
+    <string name="log_out">退出登录</string>
+    <string name="user_not_login">当前用户未登录</string>
+    <string name="not_complete">未完成</string>
 
 </resources>

@@ -85,17 +85,17 @@ public class ITicketDaoImpl implements ITicketDao {
 	}
 
 	@Override
-	public List<Ticket> queryTicketContent(int uId) {
+	public List<Ticket> queryTicketContent(String username) {
 		List<Ticket> ticket = new ArrayList<Ticket>();
 		Connection conn = new ConnectionOracle().getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "select * from PTICKET where u_id=? ";
+		String sql = "select * from PTICKET where u_id=(select u_id from ticketuser where user_name=?)";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, uId);
+			pstmt.setString(1, username);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				String orderId = rs.getString(1);

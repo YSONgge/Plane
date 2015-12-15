@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.example.yeye.plane"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.yeye.plane" >
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        android:theme="@style/AppTheme" >
+        <activity android:name=".activity.MainActivity" >
         </activity>
-        <activity android:name=".activity.PassengerActivity">
+        <activity android:name=".activity.PassengerActivity" >
         </activity>
-        <activity android:name=".activity.ContactPersonActivity">
+        <activity android:name=".activity.ContactPersonActivity" >
         </activity>
-        <activity android:name=".activity.ChangePwdActivity">
+        <activity android:name=".activity.ChangePwdActivity" >
         </activity>
-        <activity android:name=".activity.RegisterActivity">
+        <activity android:name=".activity.RegisterActivity" >
         </activity>
-        <activity android:name=".activity.LoginActivity">
+        <activity android:name=".activity.LoginActivity" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ResultActivity">
+        <activity android:name=".activity.ResultActivity" >
         </activity>
-        <activity android:name=".activity.OrderTicketActivity">
+        <activity android:name=".activity.OrderTicketActivity" >
         </activity>
-        <activity android:name=".activity.AirplaneEnActivity">
+        <activity android:name=".activity.AirplaneEnActivity" >
         </activity>
     </application>
 

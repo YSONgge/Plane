@@ -18,5 +18,5 @@ import entity.Ticket;
 public interface ITicketDao {
 	public boolean insertTicket(long orderId,Passenger p,ContactPerson c,int uId,String flightId);
 	
-	public List<Ticket> queryTicketContent(int uId);
+	public List<Ticket> queryTicketContent(String username);
 }

@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import util.LogUtil;
@@ -15,19 +19,22 @@ import entity.Flight;
 
 public class IFlightDaoImpl implements IFlightDao {
 
-	public List<Flight> selectFlight(String origin, String dest, String flightDate) {
+	public List<Flight> selectFlight(String origin, String dest,
+			String flightDate) {
 		List<Flight> flight = new ArrayList<Flight>();
 		Connection conn = new ConnectionOracle().getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		System.out.println("nonononon");
-		//TODO:date has not done
-		String sql = "select * from Flight f where f.origin_id=(select a_id from airport where a_location = ?) and f.dest_id=(select a_id from airport where a_location = ?)";
+		// TODO:date has not done
+		String sql = "select flight_id, origin_id, dest_id, to_char(start_time,'yyyy-mm-dd hh24:mi'), to_char(arrive_time,'yyyy-mm-dd hh24:mi'), fare"
+				+ " from Flight f where f.origin_id=(select a_id from airport where a_location = ?) and "
+				+ "f.dest_id="
+				+ "(select a_id from airport where a_location = ?)";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1,origin);
+			pstmt.setString(1, origin);
 			pstmt.setString(2, dest);
 			rs = pstmt.executeQuery();
 			System.out.println("yeyeey");
@@ -40,13 +47,13 @@ public class IFlightDaoImpl implements IFlightDao {
 				String flightStartTime = rs.getString(4);
 				String flightArriveTime = rs.getString(5);
 				int flightFare = rs.getInt(6);
+
 				Flight f1 = new Flight(fId, originId, destId, flightStartTime,
 						flightArriveTime, flightFare);
 				flight.add(f1);
-				System.out.println(f1.getFlightDate());
 			}
 		} catch (Exception e) {
-			
+
 			LogUtil.e(e);
 		} finally {
 			close(conn, pstmt, null);
@@ -71,7 +78,7 @@ public class IFlightDaoImpl implements IFlightDao {
 				fId = rs.getString(1);
 			}
 		} catch (Exception e) {
-		
+
 			LogUtil.e(e);
 		} finally {
 			close(conn, pstmt, null);
@@ -79,7 +86,8 @@ public class IFlightDaoImpl implements IFlightDao {
 		return fId;
 	}
 
-	public String queryFlightStartTime(String origin, String dest, String flightDate) {
+	public String queryFlightStartTime(String origin, String dest,
+			String flightDate) {
 		Connection conn = new ConnectionOracle().getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -103,7 +111,8 @@ public class IFlightDaoImpl implements IFlightDao {
 		return flightStartTime;
 	}
 
-	public String queryFlightArriveTime(String origin, String dest, String flightDate) {
+	public String queryFlightArriveTime(String origin, String dest,
+			String flightDate) {
 		Connection conn = new ConnectionOracle().getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -176,16 +185,14 @@ public class IFlightDaoImpl implements IFlightDao {
 		IFlightDaoImpl i2 = new IFlightDaoImpl();
 		// Flight f = new
 		// Flight((int)i1.queryAirportId(a),(int)i1.queryAirportId(b));
-		/*Flight f = new Flight("北京", "广州");
-		System.out.println("航班ID:\t" + i2.queryFlightId(f));
-		System.out.println("startTime:" + i2.queryFlightStartTime(f));
-		System.out.println("arriveTime:" + i2.queryFlightArriveTime(f));
-		System.out.println("fare:\t" + i2.queryFlightFare(f));*/
+		/*
+		 * Flight f = new Flight("北京", "广州"); System.out.println("航班ID:\t" +
+		 * i2.queryFlightId(f)); System.out.println("startTime:" +
+		 * i2.queryFlightStartTime(f)); System.out.println("arriveTime:" +
+		 * i2.queryFlightArriveTime(f)); System.out.println("fare:\t" +
+		 * i2.queryFlightFare(f));
+		 */
 
 	}
-
-
-
-	
 
 }

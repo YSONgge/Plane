@@ -3,7 +3,7 @@ package com.example.yeye.plane.util;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.example.yeye.plane.entity.Flight;
+import com.example.yeye.plane.enity.Ticket;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,21 +37,21 @@ public class Utility {
         } catch (JSONException e) {
             e.printStackTrace();
             //// TODO: 2015/12/10 confirm error message
-            LogUtil.e(TAG, e.getStackTrace().toString());
+            LogUtil.e(TAG, e.getMessage());
         }
         return flag;
     }
 
     public static String handleAirportPhoneNumber(String response) {
         String TAG = "handleAirportPhoneNumber";
-        JSONObject jsonObject = null;
+        JSONObject jsonObject;
         String number = null;
         try {
             jsonObject = new JSONObject(response);
             number = jsonObject.getString("aNumber");
         } catch (JSONException e) {
             e.printStackTrace();
-            LogUtil.e(TAG, e.getStackTrace().toString());
+            LogUtil.e(TAG, e.getMessage());
         }
         return number;
     }
@@ -64,27 +64,43 @@ public class Utility {
             for (int i = 0; i < array.length(); i++) {
                 JSONObject ticket = array.getJSONObject(i);
                 JSONArray jsonArray = ticket.names();
-
+                Map<String, String> map = new HashMap<>();
                 for (int j = 0; j < jsonArray.length(); j++) {
-                    Map<String, String> map = new HashMap<>();
-                    Log.i("name", jsonArray.getString(i));
-                    Log.i("value", ticket.getString(jsonArray.getString(i)));
-                    map.put(jsonArray.getString(i), ticket.getString(jsonArray.getString(i)));
-                    list.add(map);
+                    Log.i("name", jsonArray.getString(j));
+                    Log.i("value", ticket.getString(jsonArray.getString(j)));
+                    map.put(jsonArray.getString(j), ticket.getString(jsonArray.getString(j)));
                 }
-               /* String flightId = ticket.getString("flightId");
-                int origin = ticket.getInt("originId");
-                int dest = ticket.getInt("destId");
-                String flightStartTime = ticket.getString("flightStartTime");
-                String flightArriveTime = ticket.getString("flightArriveTime");
-                int flightFare = ticket.getInt("flightFare");
-
-                list.add(new Flight(flightId, origin, dest, flightStartTime, flightArriveTime, flightFare));*/
+                list.add(map);
             }
-
         } catch (JSONException e) {
             e.printStackTrace();
-            LogUtil.e(TAG, e.getStackTrace().toString());
+            LogUtil.e(TAG, e.getMessage());
+        }
+        return list;
+    }
+
+    public static List<Ticket> handleOrderListResponse(String response) {
+        // TODO: 2015/12/14 finish
+        List<Ticket> list = new ArrayList<>();
+        try {
+            JSONArray jsonArray = new JSONArray(response);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                Ticket t = new Ticket(jsonObject.getString("orderId"),
+                        jsonObject.getString("pName"),
+                        jsonObject.getString("pCardNumber"),
+                        jsonObject.getString("pTicketType"),
+                        jsonObject.getString("pInsurance"),
+                        jsonObject.getString("cName"),
+                        jsonObject.getString("cPhone"),
+                        jsonObject.getString("cEmail"),
+                        jsonObject.getString("UId"),
+                        jsonObject.getString("flightId"));
+                list.add(t);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            LogUtil.e("handleOrderListResponse", e.getMessage());
         }
         return list;
     }

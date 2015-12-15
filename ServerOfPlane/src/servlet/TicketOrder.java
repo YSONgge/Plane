@@ -79,18 +79,9 @@ public class TicketOrder extends HttpServlet {
 		
 		Boolean flag = Factory.getITicketService().insertTicket(orderId, p, c, uId, flightId);
 		
-		JSONArray jsonArray = new JSONArray();
-		if(flag==true){
-			List<Ticket> ticket = Factory.getITicketService().queryTicketContent(uId);
-			jsonArray = new JSONArray();
-			
-			for(Ticket t:ticket){
-				jsonArray.put(t.getJsonObject());
-			}
-		}else{
-			//TODO: complete
-		}
-		out.write(jsonArray.toString());
+		JSONObject json = new JSONObject();
+		json.put("result", flag);
+		out.write(json.toString());
 		out.flush();
 		out.close();
 		//测试网址

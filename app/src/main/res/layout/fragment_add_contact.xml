@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              android:weightSum="1"
-              tools:context="com.example.yeye.plane.activity.PassengerActivity">
+              android:weightSum="1">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.34">
+        android:layout_weight="0.27">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/passengerMassage"
+            android:text="联系人信息"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="40sp"/>
     </FrameLayout>
@@ -30,7 +28,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/passenger_name"
+            android:text="姓       名"
             android:textAppearance="?android:attr/textAppearanceLarge"/>
 
         <EditText
@@ -50,14 +48,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minHeight="10dp"
-            android:text="证件号码"
+            android:text="电话号码"
             android:textAppearance="?android:attr/textAppearanceLarge"/>
 
         <EditText
-            android:id="@+id/edit_id_card"
+            android:id="@+id/edit_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.10"/>
+            android:layout_weight="0.10"
+            android:inputType="phone"/>
     </LinearLayout>
 
     <LinearLayout
@@ -70,65 +69,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minHeight="10dp"
-            android:text="机票类型"
+            android:text="电子邮箱"
             android:textAppearance="?android:attr/textAppearanceLarge"/>
 
-        <RadioGroup
-            android:id="@+id/radio_level"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <RadioButton
-                android:id="@+id/jingjicang"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:text="经济舱"/>
-
-            <RadioButton
-                android:id="@+id/gongwucang"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:text="公务舱"/>
-
-            <RadioButton
-                android:id="@+id/toudengcang"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:text="头等舱"/>
-        </RadioGroup>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:weightSum="1">
-
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/edit_email"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="保        险"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textEmailAddress"/>
 
-        <CheckBox
-            android:id="@+id/yanWu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="延误险"/>
 
-        <CheckBox
-            android:id="@+id/renShen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="人身险"/>
     </LinearLayout>
 
     <FrameLayout
@@ -139,14 +91,12 @@
 
         <Button
             android:id="@+id/btn_submit"
-            android:layout_width="match_parent"
+            android:layout_width="103dp"
             android:layout_height="77dp"
             android:layout_gravity="center"
-            android:background="@color/colorPrimary"
             android:enabled="true"
-            android:text="@string/confirm"
+            android:text="确定"
             android:textSize="20sp"/>
 
     </FrameLayout>
-
 </LinearLayout>

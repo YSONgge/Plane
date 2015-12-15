@@ -9,8 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.yeye.plane.R;
+import com.example.yeye.plane.fragment.AddContactFragment;
+import com.example.yeye.plane.fragment.ContactListFragment;
 
-public class ContactPersonActivity extends AppCompatActivity {
+public class ContactPersonActivity extends AppCompatActivity
+        implements ContactListFragment.OnFragmentInteractionListener,
+        AddContactFragment.OnFragmentInteractionListener {
 
     private android.support.v7.app.ActionBar bar;
     private Button button;
@@ -19,9 +23,11 @@ public class ContactPersonActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact_person);
+        setContentView(R.layout.activity_contact_personnew);
 
-        button = (Button) findViewById(R.id.button);
+        getFragmentManager().beginTransaction().add(R.id.fragment_content, ContactListFragment.newInstance()).commit();
+
+       /* button = (Button) findViewById(R.id.button);
         name = (EditText) findViewById(R.id.editText);
         phone = (EditText) findViewById(R.id.editText2);
         email = (EditText) findViewById(R.id.editText3);
@@ -35,9 +41,9 @@ public class ContactPersonActivity extends AppCompatActivity {
                 ContactPersonActivity.this.finish();
 
             }
-        });
+        });*/
 
-            /*
+        /*
         actionBar
          */
         bar = getSupportActionBar();
@@ -60,5 +66,15 @@ public class ContactPersonActivity extends AppCompatActivity {
         }
         //return super.onOptionsItemSelected(item);
         return true;
+    }
+
+    @Override
+    public void addContact() {
+        getFragmentManager().beginTransaction().replace(R.id.fragment_content, AddContactFragment.newInstance()).commit();
+    }
+
+    @Override
+    public void addFinish() {
+        getFragmentManager().beginTransaction().replace(R.id.fragment_content, ContactListFragment.newInstance()).commit();
     }
 }

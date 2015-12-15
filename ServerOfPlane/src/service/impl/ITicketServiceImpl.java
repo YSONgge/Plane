@@ -28,8 +28,8 @@ public class ITicketServiceImpl {
 		return dao.insertTicket(orderId, p, c, uId, flightId);
 	}
 
-	public List<Ticket> queryTicketContent(int uId) {
-		return dao.queryTicketContent(uId);
+	public List<Ticket> queryTicketContent(String username) {
+		return dao.queryTicketContent(username);
 	}
 
 	public static void main(String[] args) {
