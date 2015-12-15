@@ -64,7 +64,7 @@ public class ContactListFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_contact_list, container, false);
         lv = (ListView) v.findViewById(R.id.lv_contacts);
-        adapter = new ArrayAdapter<Contact>(getContext(), android.R.layout.simple_list_item_1, data);
+        adapter = new ArrayAdapter<Contact>(getActivity(), android.R.layout.simple_list_item_1, data);
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -91,10 +91,15 @@ public class ContactListFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                List<Contact> list = PlaneDB.getInstance(getContext()).loadContact();
+                List<Contact> list = PlaneDB.getInstance(getActivity()).loadContact();
                 data.clear();
                 data.addAll(list);
-                adapter.notifyDataSetChanged();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        adapter.notifyDataSetChanged();
+                    }
+                });
             }
         }).start();
     }

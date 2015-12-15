@@ -66,8 +66,17 @@ public class PlaneDB {
     }
 
     public List<Contact> loadContact() {
-        // TODO: 2015/12/14 finish this
-        return null;
+        List<Contact> list = new ArrayList<>();
+        Cursor c = db.query("contact", null, null, null, null, null, null);
+        while(c.moveToNext()){
+            String name = c.getString(c.getColumnIndex("name"));
+            String email = c.getString(c.getColumnIndex("email"));
+            String phoneNumber = c.getString(c.getColumnIndex("phone_number"));
+            Contact contact = new Contact(name, phoneNumber, email);
+            list.add(contact);
+        }
+        close(c);
+        return list;
     }
 
     private void close(Cursor cursor) {

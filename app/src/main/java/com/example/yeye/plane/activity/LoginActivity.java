@@ -32,12 +32,14 @@ public class LoginActivity extends AppCompatActivity {
     private EditText passwordEdit;
 
     private boolean doLogin;
+    private boolean fromOtherActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         doLogin = getIntent().getBooleanExtra("do_login", false);
+        fromOtherActivity = getIntent().getBooleanExtra("fromOtherActivity", false);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if (!TextUtils.isEmpty(prefs.getString("username", null)) && !doLogin) {
             MainActivity.actionStart(LoginActivity.this);
@@ -92,7 +94,9 @@ public class LoginActivity extends AppCompatActivity {
                                 if (result) {
                                     Toast.makeText(LoginActivity.this, R.string.login_success, Toast.LENGTH_SHORT).show();
                                     rememberUser(usernameEdit.getText().toString());
-                                    MainActivity.actionStart(LoginActivity.this);
+                                    if (!fromOtherActivity) {
+                                        MainActivity.actionStart(LoginActivity.this);
+                                    }
                                     finish();
                                 } else {
                                     Toast.makeText(LoginActivity.this, R.string.uname_pwd_wrong, Toast.LENGTH_SHORT).show();
@@ -117,6 +121,7 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * when login, remember username and login time .
+     *
      * @param username
      */
     private void rememberUser(String username) {

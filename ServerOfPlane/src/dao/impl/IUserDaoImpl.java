@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.sun.org.apache.regexp.internal.recompile;
+
 import util.LogUtil;
 
 import dao.IUserDao;
@@ -108,6 +110,28 @@ public class IUserDaoImpl implements IUserDao {
 			}
 			return flag;
 		}
+	}
+
+	@Override
+	public int queryUid(User u) {
+		Connection conn = new ConnectionOracle().getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int id = 0;
+		String sql = "select u_id from ticketuser where user_name=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, u.getUsername());
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				id = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			LogUtil.e(e);
+		} finally {
+			close(conn, pstmt, rs);
+		}
+		return id;
 	}
 
 	private void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {

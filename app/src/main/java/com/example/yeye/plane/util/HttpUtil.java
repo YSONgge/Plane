@@ -16,6 +16,7 @@ import java.util.Arrays;
 public class HttpUtil {
     public static void sendHttpRequest(final String address, final String method, final String data, final HttpCallbackListener listener) {
         LogUtil.d("address", address);
+        LogUtil.d("PostData", data==null?"":data);
         new Thread(new Runnable() {
             @Override
             public void run() {

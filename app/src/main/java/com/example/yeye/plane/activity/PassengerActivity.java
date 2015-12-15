@@ -3,12 +3,14 @@ package com.example.yeye.plane.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.yeye.plane.R;
 import com.example.yeye.plane.util.LogUtil;
@@ -81,7 +83,12 @@ public class PassengerActivity extends AppCompatActivity {
     }
 
     private boolean check() {
-        return false;
+        boolean flag = true;
+        if(TextUtils.isEmpty(name.getText())|| TextUtils.isEmpty(cardNumber.getText())) {
+            flag = false;
+            Toast.makeText(PassengerActivity.this,R.string.not_complete,Toast.LENGTH_SHORT).show();
+        }
+        return flag;
     }
 
     /*

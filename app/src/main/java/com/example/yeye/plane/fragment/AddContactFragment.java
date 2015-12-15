@@ -74,7 +74,7 @@ public class AddContactFragment extends Fragment {
                 @Override
                 public void run() {
                     Contact contact = new Contact(nameEdit.getText().toString(), phoneEdit.getText().toString(), emailEdit.getText().toString());
-                    PlaneDB.getInstance(getContext()).saveContact(contact);
+                    PlaneDB.getInstance(getActivity()).saveContact(contact);
                 }
             }).start();
             if (mListener != null) {

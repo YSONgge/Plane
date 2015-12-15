@@ -25,7 +25,7 @@ public class ContactPersonActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_personnew);
 
-        getFragmentManager().beginTransaction().add(R.id.fragment_content, ContactListFragment.newInstance()).commit();
+//        getFragmentManager().beginTransaction().add(R.id.fragment_content, ContactListFragment.newInstance()).commit();
 
        /* button = (Button) findViewById(R.id.button);
         name = (EditText) findViewById(R.id.editText);

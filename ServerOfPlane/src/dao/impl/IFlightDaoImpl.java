@@ -53,7 +53,6 @@ public class IFlightDaoImpl implements IFlightDao {
 				flight.add(f1);
 			}
 		} catch (Exception e) {
-
 			LogUtil.e(e);
 		} finally {
 			close(conn, pstmt, null);

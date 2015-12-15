@@ -71,7 +71,7 @@ public class mineFragment extends Fragment {
         changePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ChangePwdActivity.class);
+                Intent intent = new Intent(getActivity(), ChangePwdActivity.class);
                 startActivity(intent);
             }
         });
@@ -79,7 +79,7 @@ public class mineFragment extends Fragment {
         airportEn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), AirplaneEnActivity.class);
+                Intent intent = new Intent(getActivity(), AirplaneEnActivity.class);
                 startActivity(intent);
             }
         });
@@ -88,7 +88,7 @@ public class mineFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("username", "").apply();
-                Intent intent = new Intent(getContext(), LoginActivity.class);
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
                 getActivity().finish();
             }

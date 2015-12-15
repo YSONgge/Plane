@@ -23,9 +23,9 @@ public class ITicketServiceImpl {
 		dao = new ITicketDaoImpl();
 	}
 
-	public boolean insertTicket(long orderId, Passenger p, ContactPerson c,
+	public boolean insertTicket(Passenger p, ContactPerson c,
 			int uId, String flightId) {
-		return dao.insertTicket(orderId, p, c, uId, flightId);
+		return dao.insertTicket(p, c, uId, flightId);
 	}
 
 	public List<Ticket> queryTicketContent(String username) {
@@ -36,7 +36,7 @@ public class ITicketServiceImpl {
 		ContactPerson c = new ContactPerson("张三", "19231231", "wer@qq.com");
 		Passenger p = new Passenger("李四", "1231231232312");
 		ITicketServiceImpl IT = new ITicketServiceImpl();
-		IT.insertTicket(0001, p, c, 202, "ye5112");
+		IT.insertTicket(p, c, 202, "ye5112");
 		
 	}
 }

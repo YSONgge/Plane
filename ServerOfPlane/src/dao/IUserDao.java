@@ -10,4 +10,6 @@ public interface IUserDao {
 	public boolean userLogin(User u);
 
 	public boolean changePW(User u, String newPW);
+	
+	public int queryUid(User u);
 }

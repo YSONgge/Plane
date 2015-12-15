@@ -27,39 +27,34 @@ import entity.Ticket;
 public class ITicketDaoImpl implements ITicketDao {
 
 	@Override
-	public boolean insertTicket(long orderId, Passenger p, ContactPerson c,
-			int uId, String flightId) {
+	public boolean insertTicket(Passenger p, ContactPerson c, int uId,
+			String flightId) {
 		boolean flag = false;
-		if (checkOrderId(orderId)) {
-			return flag;
-		} else {
-			Connection conn = new ConnectionOracle().getConnection();
-			PreparedStatement pstmt = null;
-			String sql = "insert into pticket values (?,?,?,?,?,?,?,?,?,?)";
-			try {
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setLong(1, orderId);
-				pstmt.setString(2, p.getName());
-				pstmt.setString(3, p.getCardNumber());
-				//TODO: fix hard code
-				pstmt.setString(4, "商务舱");
-				pstmt.setString(5, "航意险");
-				pstmt.setString(6, c.getName());
-				pstmt.setString(7, c.getPhoneNumber());
-				pstmt.setString(8, c.getEmail());
-				pstmt.setInt(9, uId);
-				pstmt.setString(10, flightId);
-				int i = pstmt.executeUpdate();
-				if (i == 1) {
-					flag = true;
-				}
-			} catch (SQLException e) {
-				LogUtil.e(e);
-			} finally {
-				close(conn, pstmt, null);
+		Connection conn = new ConnectionOracle().getConnection();
+		PreparedStatement pstmt = null;
+		String sql = "insert into pticket values (order_id.nextval,?,?,?,?,?,?,?,?,?)";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, p.getName());
+			pstmt.setString(2, p.getCardNumber());
+			// TODO: fix hard code
+			pstmt.setString(3, "商务舱");
+			pstmt.setString(4, "航意险");
+			pstmt.setString(5, c.getName());
+			pstmt.setString(6, c.getPhoneNumber());
+			pstmt.setString(7, c.getEmail());
+			pstmt.setInt(8, uId);
+			pstmt.setString(9, flightId);
+			int i = pstmt.executeUpdate();
+			if (i == 1) {
+				flag = true;
 			}
-
+		} catch (SQLException e) {
+			LogUtil.e(e);
+		} finally {
+			close(conn, pstmt, null);
 		}
+
 		return flag;
 	}
 
@@ -121,8 +116,8 @@ public class ITicketDaoImpl implements ITicketDao {
 		}
 		return ticket;
 	}
-	
-	public void clear(){
+
+	public void clear() {
 		Connection conn = new ConnectionOracle().getConnection();
 		PreparedStatement pstmt = null;
 		String sql = "delete from pticket";
@@ -149,8 +144,10 @@ public class ITicketDaoImpl implements ITicketDao {
 			LogUtil.e(e);
 		}
 	}
+
 	/**
 	 * ----------Clear test data. BE CAREFUL!--------
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {

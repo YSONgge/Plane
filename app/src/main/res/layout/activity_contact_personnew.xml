@@ -5,6 +5,7 @@
 
     <fragment
         android:id="@+id/fragment_content"
+        android:name="com.example.yeye.plane.fragment.ContactListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </FrameLayout>

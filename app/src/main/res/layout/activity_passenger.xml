@@ -75,6 +75,7 @@
 
         <RadioGroup
             android:id="@+id/radio_level"
+            android:checkedButton="@+id/jingjicang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 

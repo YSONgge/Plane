@@ -30,6 +30,11 @@ public class IUserServiceImpl implements IUserService{
 		return dao.userRegister(u);
 	}
 
+	@Override
+	public int queryUid(User u) {
+		return dao.queryUid(u);
+	}
+	
 	/**
 	 * Test Mod
 	 * @param args

@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import entity.ContactPerson;
 import entity.Passenger;
 import entity.Ticket;
+import entity.User;
 import factory.Factory;
 
 public class TicketOrder extends HttpServlet {
@@ -59,33 +60,35 @@ public class TicketOrder extends HttpServlet {
 
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		//need set tomcat conf/server.xml <Connector> useBodyEncodingForURI=true
-		
+		// need set tomcat conf/server.xml <Connector>
+		// useBodyEncodingForURI=true
+
 		PrintWriter out = response.getWriter();
-		long orderId = Long.parseLong(request.getParameter("orderId"));
-		
 		String pName = request.getParameter("pName");
 		String pCardNumber = request.getParameter("pCardNumber");
 		Passenger p = new Passenger(pName, pCardNumber);
-		
+
 		String cName = request.getParameter("cName");
 		String cPhone = request.getParameter("cPhone");
 		String cEmail = request.getParameter("cEmail");
 		ContactPerson c = new ContactPerson(cName, cPhone, cEmail);
-		
-		int uId = Integer.parseInt(request.getParameter("uId"));
-		
+
+		String username = request.getParameter("username");
+
+		int uId = Factory.getIUserService().queryUid(new User(username, null));
+
 		String flightId = request.getParameter("flightId");
-		
-		Boolean flag = Factory.getITicketService().insertTicket(orderId, p, c, uId, flightId);
-		
+
+		Boolean flag = Factory.getITicketService().insertTicket(p, c, uId,
+				flightId);
+
 		JSONObject json = new JSONObject();
 		json.put("result", flag);
 		out.write(json.toString());
 		out.flush();
 		out.close();
-		//测试网址
-		//http://127.0.0.1:8080/ServerOfPlane/servlet/TicketOrder?orderId=12312313&pName=李亮&pCardNumber=14040219940512002x&cName=张良&cPhone=13922223333&cEmail=123123@QQ.com&uId=106&flightId=hz4521
+		// 测试网址
+		// http://127.0.0.1:8080/ServerOfPlane/servlet/TicketOrder?orderId=12312313&pName=李亮&pCardNumber=14040219940512002x&cName=张良&cPhone=13922223333&cEmail=123123@QQ.com&uId=106&flightId=hz4521
 	}
 
 }
