@@ -2,7 +2,6 @@ package com.example.yeye.plane.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,9 +14,8 @@ import android.widget.ListView;
 
 import com.example.yeye.plane.R;
 import com.example.yeye.plane.db.PlaneDB;
-import com.example.yeye.plane.enity.Contact;
+import com.example.yeye.plane.entity.Contact;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

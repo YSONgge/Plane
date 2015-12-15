@@ -38,10 +38,9 @@
 
     <Button
         android:id="@+id/btn_query_airport"
-        android:layout_width="407dp"
+        android:layout_width="364dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_weight="0.10"
+        android:layout_gravity="center"
         android:text="查询"
         android:textSize="30sp"/>
 

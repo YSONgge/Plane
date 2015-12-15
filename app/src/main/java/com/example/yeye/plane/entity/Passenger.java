@@ -1,4 +1,4 @@
-package com.example.yeye.plane.enity;
+package com.example.yeye.plane.entity;
 
 import android.text.TextUtils;
 

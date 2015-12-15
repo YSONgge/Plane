@@ -1,7 +1,6 @@
 package com.example.yeye.plane.fragment;
 
 import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.text.TextUtils;
@@ -10,10 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.yeye.plane.R;
 import com.example.yeye.plane.db.PlaneDB;
-import com.example.yeye.plane.enity.Contact;
+import com.example.yeye.plane.entity.Contact;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -84,10 +84,17 @@ public class AddContactFragment extends Fragment {
     }
 
     private boolean check() {
-        if (TextUtils.isEmpty(nameEdit.getText()) || TextUtils.isEmpty(phoneEdit.getText()) || TextUtils.isEmpty(emailEdit.getText()))
-            return false;
-        else
-            return true;
+        boolean flag = true;
+        String email = emailEdit.getText().toString();
+        String string = ".*@.*";
+        if (TextUtils.isEmpty(nameEdit.getText()) || TextUtils.isEmpty(phoneEdit.getText()) || TextUtils.isEmpty(emailEdit.getText())) {
+            flag = false;
+        }
+        if (!email.matches(string)) {
+            flag = false;
+            Toast.makeText(getActivity(), "邮箱类型有误", Toast.LENGTH_LONG).show();
+        }
+        return flag;
     }
 
     @Override

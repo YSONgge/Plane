@@ -5,8 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.yeye.plane.enity.Contact;
-import com.example.yeye.plane.enity.Passenger;
+import com.example.yeye.plane.entity.Contact;
+import com.example.yeye.plane.entity.Passenger;
 
 import java.util.ArrayList;
 import java.util.List;

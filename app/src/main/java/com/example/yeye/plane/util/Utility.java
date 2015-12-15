@@ -3,7 +3,7 @@ package com.example.yeye.plane.util;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.example.yeye.plane.enity.Ticket;
+import com.example.yeye.plane.entity.Ticket;
 
 import org.json.JSONArray;
 import org.json.JSONException;

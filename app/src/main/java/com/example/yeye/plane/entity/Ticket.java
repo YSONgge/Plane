@@ -2,7 +2,7 @@
  * @Author yeye
  * @date 2015-12-11  下午9:57:01
  */
-package com.example.yeye.plane.enity;
+package com.example.yeye.plane.entity;
 
 import com.example.yeye.plane.util.LogUtil;
 
@@ -41,7 +41,7 @@ public class Ticket {
 		this.flightId = flightId;
 	}
 
-	// TODO:记得把对象提取出来
+
 
 	public JSONObject getJsonObject() {
 		JSONObject json = new JSONObject();

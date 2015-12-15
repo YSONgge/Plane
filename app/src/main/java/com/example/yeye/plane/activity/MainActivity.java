@@ -18,7 +18,7 @@ import com.example.yeye.plane.fragment.orderFragment;
 import com.example.yeye.plane.fragment.queryFragment;
 import com.example.yeye.plane.util.LogUtil;
 
-public class MainActivity extends AppCompatActivity implements mineFragment.OnFragmentInteractionListener,queryFragment.OnFragmentInteractionListener,orderFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements mineFragment.OnFragmentInteractionListener, queryFragment.OnFragmentInteractionListener, orderFragment.OnFragmentInteractionListener {
 
     static final int NUM_ITEMS = 3;
     CollectionPagerAdapter mPagerAdapter;
@@ -65,10 +65,26 @@ public class MainActivity extends AppCompatActivity implements mineFragment.OnFr
 
         // Add 3 tabs, specifying the tab's text and TabListener
         for (int i = 0; i < 3; i++) {
-            actionBar.addTab(
-                    actionBar.newTab()
-                            .setText("Tab " + (i + 1))
-                            .setTabListener(tabListener));
+            switch (i) {
+                case 0:
+                    actionBar.addTab(
+                            actionBar.newTab()
+                                    .setText("查询")
+                                    .setTabListener(tabListener));
+                    break;
+                case 1:
+                    actionBar.addTab(
+                            actionBar.newTab()
+                                    .setText("订单")
+                                    .setTabListener(tabListener));
+                    break;
+                case 2:
+                    actionBar.addTab(
+                            actionBar.newTab()
+                                    .setText("我的")
+                                    .setTabListener(tabListener));
+                    break;
+            }
         }
     }
 
@@ -97,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements mineFragment.OnFr
 
         @Override
         public Fragment getItem(int position) {
-            LogUtil.d("FragmentPagerAdapter", position+"");
+            LogUtil.d("FragmentPagerAdapter", position + "");
             Fragment fragment = null;
             switch (position) {
                 case 0:

@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.example.yeye.plane.R;
 import com.example.yeye.plane.util.LogUtil;
 
+
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,7 +26,7 @@ public class PassengerActivity extends AppCompatActivity {
     private Button submit;
     private EditText name, cardNumber;
     private RadioGroup radioGroup;
-    private CheckBox delay,safe;
+    private CheckBox delay, safe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +43,14 @@ public class PassengerActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(check()) {
+                if (check()) {
                     Intent intent = getIntent();
                     JSONObject jsonObject = new JSONObject();
                     try {
                         jsonObject.put("name", name.getText().toString());
                         jsonObject.put("idCard", cardNumber.getText().toString());
                         int level = 0;
-                        switch (radioGroup.getCheckedRadioButtonId()){
+                        switch (radioGroup.getCheckedRadioButtonId()) {
                             case R.id.jingjicang:
                                 level = 1;
                                 break;
@@ -83,10 +85,17 @@ public class PassengerActivity extends AppCompatActivity {
     }
 
     private boolean check() {
+        String string1 = "^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9]|X)$";//身份证号
+        String cardNumber1 = cardNumber.getText().toString();
+
         boolean flag = true;
-        if(TextUtils.isEmpty(name.getText())|| TextUtils.isEmpty(cardNumber.getText())) {
+        if (TextUtils.isEmpty(name.getText()) || TextUtils.isEmpty(cardNumber.getText())) {
             flag = false;
-            Toast.makeText(PassengerActivity.this,R.string.not_complete,Toast.LENGTH_SHORT).show();
+            Toast.makeText(PassengerActivity.this, R.string.not_complete, Toast.LENGTH_SHORT).show();
+        }
+        if (!cardNumber1.matches(string1) ) {
+                flag = false;
+            Toast.makeText(PassengerActivity.this,"身份证号有误",Toast.LENGTH_LONG).show();
         }
         return flag;
     }

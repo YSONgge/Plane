@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,8 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.yeye.plane.R;
-import com.example.yeye.plane.enity.Contact;
-import com.example.yeye.plane.enity.Passenger;
+import com.example.yeye.plane.entity.Contact;
 import com.example.yeye.plane.util.HttpCallbackListener;
 import com.example.yeye.plane.util.HttpUtil;
 import com.example.yeye.plane.util.IConst;
@@ -153,6 +151,7 @@ public class OrderTicketActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             Toast.makeText(OrderTicketActivity.this, result.toString(), Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                     });
                 }
