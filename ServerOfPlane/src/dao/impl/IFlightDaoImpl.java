@@ -4,17 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import util.LogUtil;
 import dao.IFlightDao;
 import db.ConnectionOracle;
-
 import entity.Flight;
 
 public class IFlightDaoImpl implements IFlightDao {

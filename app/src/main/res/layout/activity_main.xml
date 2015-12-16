@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true">
 
         <fragment
-            android:name="com.example.yeye.plane.fragment.queryFragment"
+            android:name="com.example.yeye.plane.fragment.QueryFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

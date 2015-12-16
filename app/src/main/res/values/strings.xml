@@ -40,6 +40,14 @@
     <string name="search">搜索</string>
     <string name="search_title">机票预订</string>
     <string name="refresh">刷新</string>
+<<<<<<< HEAD
     <string name="orderdetail">订单详情</string>
+=======
+    <string name="email">电子邮箱</string>
+    <string name="phone_number">电话号码</string>
+    <string name="name">姓名</string>
+    <string name="add_contact_title">联系人信息</string>
+    <string name="show_hide_pwd">显示/隐藏密码</string>
+>>>>>>> 1092a3be2d1aef7f33b9ff17c0f3f439725bd6e9
 
 </resources>

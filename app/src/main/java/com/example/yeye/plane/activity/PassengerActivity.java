@@ -16,7 +16,6 @@ import com.example.yeye.plane.R;
 import com.example.yeye.plane.util.LogUtil;
 
 
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -75,13 +74,13 @@ public class PassengerActivity extends AppCompatActivity {
             }
         });
 
-        // TODO: 2015/12/11 机票类型未完成
-
         bar = getSupportActionBar();
-        bar.setDisplayHomeAsUpEnabled(true);
-        bar.setDisplayShowHomeEnabled(true);
-        bar.setHomeButtonEnabled(true);
-        bar.setTitle("乘客信息");
+        if (bar != null) {
+            bar.setDisplayHomeAsUpEnabled(true);
+            bar.setDisplayShowHomeEnabled(true);
+            bar.setHomeButtonEnabled(true);
+            bar.setTitle("乘客信息");
+        }
     }
 
     private boolean check() {
@@ -93,9 +92,9 @@ public class PassengerActivity extends AppCompatActivity {
             flag = false;
             Toast.makeText(PassengerActivity.this, R.string.not_complete, Toast.LENGTH_SHORT).show();
         }
-        if (!cardNumber1.matches(string1) ) {
-                flag = false;
-            Toast.makeText(PassengerActivity.this,"身份证号有误",Toast.LENGTH_LONG).show();
+        if (!cardNumber1.matches(string1)) {
+            flag = false;
+            Toast.makeText(PassengerActivity.this, "身份证号有误", Toast.LENGTH_LONG).show();
         }
         return flag;
     }

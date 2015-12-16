@@ -3,100 +3,58 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              android:weightSum="1">
+              android:weightSum="6">
 
-    <FrameLayout
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.27">
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/add_contact_title"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="40sp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="联系人信息"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="40sp"/>
-    </FrameLayout>
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/edit_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:gravity="center"
+        android:hint="@string/name"
+        android:inputType="text"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="姓       名"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
-        <EditText
-            android:id="@+id/edit_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-    </LinearLayout>
-
-    <LinearLayout
+    <EditText
+        android:id="@+id/edit_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:gravity="center"
+        android:hint="@string/phone_number"
+        android:inputType="phone"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="10dp"
-            android:text="电话号码"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
-        <EditText
-            android:id="@+id/edit_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.10"
-            android:inputType="phone"/>
-    </LinearLayout>
-
-    <LinearLayout
+    <EditText
+        android:id="@+id/edit_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="10dp"
-            android:text="电子邮箱"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
-
-        <EditText
-            android:id="@+id/edit_email"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textEmailAddress"/>
-
-
-    </LinearLayout>
-
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.40">
+        android:layout_height="0dp"
+        android:layout_weight="5">
 
         <Button
             android:id="@+id/btn_submit"
-            android:layout_width="103dp"
-            android:layout_height="77dp"
-            android:layout_gravity="center"
-            android:enabled="true"
-            android:text="确定"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/confirm"
             android:textSize="20sp"/>
+    </RelativeLayout>
 
-    </FrameLayout>
 </LinearLayout>

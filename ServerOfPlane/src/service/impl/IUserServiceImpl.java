@@ -1,10 +1,9 @@
 package service.impl;
 
+import service.IUserService;
 import dao.IUserDao;
 import dao.impl.IUserDaoImpl;
 import entity.User;
-import service.IUserService;
-import servlet.UserRegister;
 
 public class IUserServiceImpl implements IUserService{
 	

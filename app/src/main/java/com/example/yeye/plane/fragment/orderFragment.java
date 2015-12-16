@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class orderFragment extends Fragment {
+public class OrderFragment extends Fragment {
 
     private ListView listView;
     private List<Ticket> data;
@@ -41,15 +41,15 @@ public class orderFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment orderFragment.
+     * @return A new instance of fragment OrderFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static orderFragment newInstance() {
-        orderFragment fragment = new orderFragment();
+    public static OrderFragment newInstance() {
+        OrderFragment fragment = new OrderFragment();
         return fragment;
     }
 
-    public orderFragment() {
+    public OrderFragment() {
         // Required empty public constructor
     }
 
