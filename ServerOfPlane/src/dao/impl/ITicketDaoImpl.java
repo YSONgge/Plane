@@ -28,7 +28,7 @@ public class ITicketDaoImpl implements ITicketDao {
 
 	@Override
 	public boolean insertTicket(Passenger p, ContactPerson c, int uId,
-			String flightId) {
+			String flightId,String insurance,String type) {
 		boolean flag = false;
 		Connection conn = new ConnectionOracle().getConnection();
 		PreparedStatement pstmt = null;
@@ -38,8 +38,8 @@ public class ITicketDaoImpl implements ITicketDao {
 			pstmt.setString(1, p.getName());
 			pstmt.setString(2, p.getCardNumber());
 			// TODO: fix hard code
-			pstmt.setString(3, "商务舱");
-			pstmt.setString(4, "航意险");
+			pstmt.setString(3, type);
+			pstmt.setString(4, insurance);
 			pstmt.setString(5, c.getName());
 			pstmt.setString(6, c.getPhoneNumber());
 			pstmt.setString(7, c.getEmail());

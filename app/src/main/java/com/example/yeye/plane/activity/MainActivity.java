@@ -13,12 +13,12 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.yeye.plane.R;
-import com.example.yeye.plane.fragment.mineFragment;
-import com.example.yeye.plane.fragment.orderFragment;
-import com.example.yeye.plane.fragment.queryFragment;
+import com.example.yeye.plane.fragment.MineFragment;
+import com.example.yeye.plane.fragment.OrderFragment;
+import com.example.yeye.plane.fragment.QueryFragment;
 import com.example.yeye.plane.util.LogUtil;
 
-public class MainActivity extends AppCompatActivity implements mineFragment.OnFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity implements MineFragment.OnFragmentInteractionListener{
 
     static final int NUM_ITEMS = 3;
     CollectionPagerAdapter mPagerAdapter;
@@ -117,13 +117,13 @@ public class MainActivity extends AppCompatActivity implements mineFragment.OnFr
             Fragment fragment = null;
             switch (position) {
                 case 0:
-                    fragment = queryFragment.newInstance();
+                    fragment = QueryFragment.newInstance();
                     break;
                 case 1:
-                    fragment = orderFragment.newInstance();
+                    fragment = OrderFragment.newInstance();
                     break;
                 case 2:
-                    fragment = mineFragment.newInstance();
+                    fragment = MineFragment.newInstance();
                     break;
             }
             return fragment;

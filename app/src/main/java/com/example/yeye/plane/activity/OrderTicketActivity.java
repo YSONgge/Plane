@@ -106,12 +106,12 @@ public class OrderTicketActivity extends AppCompatActivity {
     private class onSubmit implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            // TODO: 2015/12/14 check complete
             if (contact == null || passengerjson == null) {
                 Toast.makeText(OrderTicketActivity.this, R.string.not_complete, Toast.LENGTH_SHORT).show();
                 return;
             }
             if (username.length() == 0) {
+                //on create, check username.length==0,do login. so, here just get username
                 username = PreferenceManager.getDefaultSharedPreferences(OrderTicketActivity.this).getString("username", "");
             }
             String address = IConst.SERVLET_ADDR + "TicketOrder";
@@ -122,6 +122,15 @@ public class OrderTicketActivity extends AppCompatActivity {
                 data.append("&");
                 data.append("pCardNumber=");
                 data.append(passengerjson.getString("idCard"));
+                data.append("&");
+                data.append("level=");
+                data.append(passengerjson.getString("level"));
+                data.append("&");
+                data.append("delay=");
+                data.append(passengerjson.getBoolean("delay"));
+                data.append("&");
+                data.append("safe=");
+                data.append(passengerjson.getBoolean("safe"));
                 data.append("&");
                 data.append("cName=");
                 data.append(contact.getName());
@@ -139,6 +148,7 @@ public class OrderTicketActivity extends AppCompatActivity {
                 data.append(map.get("flightId"));
             } catch (JSONException e) {
                 e.printStackTrace();
+                LogUtil.e("onSubmit", e.toString());
             }
             HttpUtil.sendHttpRequest(address, "POST", data.toString(), new HttpCallbackListener() {
                 @Override
@@ -148,7 +158,9 @@ public class OrderTicketActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             Toast.makeText(OrderTicketActivity.this, result.toString(), Toast.LENGTH_SHORT).show();
-                            finish();
+                            if (result) {
+                                finish();
+                            }
                         }
                     });
                 }

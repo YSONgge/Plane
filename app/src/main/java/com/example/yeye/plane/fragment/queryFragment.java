@@ -1,8 +1,6 @@
 package com.example.yeye.plane.fragment;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -12,32 +10,23 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 
 import com.example.yeye.plane.R;
 import com.example.yeye.plane.activity.ResultActivity;
-import com.example.yeye.plane.entity.Flight;
 import com.example.yeye.plane.util.HttpCallbackListener;
 import com.example.yeye.plane.util.HttpUtil;
 import com.example.yeye.plane.util.IConst;
-import com.example.yeye.plane.util.LogUtil;
 import com.example.yeye.plane.util.Utility;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.SimpleFormatter;
 
-public class queryFragment extends Fragment implements View.OnClickListener {
+public class QueryFragment extends Fragment implements View.OnClickListener {
 
     private View view;
     private EditText origin, dest;
@@ -49,15 +38,15 @@ public class queryFragment extends Fragment implements View.OnClickListener {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment queryFragment.
+     * @return A new instance of fragment QueryFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static queryFragment newInstance() {
-        queryFragment fragment = new queryFragment();
+    public static QueryFragment newInstance() {
+        QueryFragment fragment = new QueryFragment();
         return fragment;
     }
 
-    public queryFragment() {
+    public QueryFragment() {
         // Required empty public constructor
     }
 

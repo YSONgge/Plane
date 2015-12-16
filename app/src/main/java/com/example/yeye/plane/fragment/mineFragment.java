@@ -2,7 +2,6 @@ package com.example.yeye.plane.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -22,12 +21,12 @@ import com.example.yeye.plane.activity.LoginActivity;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link mineFragment.OnFragmentInteractionListener} interface
+ * {@link MineFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link mineFragment#newInstance} factory method to
+ * Use the {@link MineFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class mineFragment extends Fragment {
+public class MineFragment extends Fragment {
 
     private View view;
     private Button changePass, airportEn, logoutBtn;
@@ -39,15 +38,15 @@ public class mineFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment mineFragment.
+     * @return A new instance of fragment MineFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static mineFragment newInstance() {
-        mineFragment fragment = new mineFragment();
+    public static MineFragment newInstance() {
+        MineFragment fragment = new MineFragment();
         return fragment;
     }
 
-    public mineFragment() {
+    public MineFragment() {
         // Required empty public constructor
     }
 
