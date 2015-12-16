@@ -32,7 +32,7 @@ public class Ticket {
 		this.pName = pName;
 		this.pCardNumber = pCardNumber;
 		this.pTicketType = pTicketType;
-		this.pInsurance = pInsurance;
+		this.pInsurance = pInsurance==null?"NoInsurance":pInsurance;
 		this.cName = cName;
 		this.cPhone = cPhone;
 		this.cEmail = cEmail;

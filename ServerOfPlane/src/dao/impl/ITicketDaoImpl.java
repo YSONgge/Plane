@@ -102,7 +102,6 @@ public class ITicketDaoImpl implements ITicketDao {
 				String cEmail = rs.getString(8);
 				String UId = rs.getString(9);
 				String flightId = rs.getString(10);
-
 				Ticket t = new Ticket(orderId, pName, pCardNumber, pTicketType,
 						pInsurance, cName, cPhone, cEmail, UId, flightId);
 

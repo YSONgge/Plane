@@ -1,5 +1,7 @@
 package com.example.yeye.plane.fragment;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -101,6 +103,11 @@ public class OrderFragment extends Fragment {
     }
 
     private void loadOrder() {
+        final ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
         final String address = IConst.SERVLET_ADDR + "MyOrder";
         String postData = "username=" + username;
         HttpUtil.sendHttpRequest(address, "POST", postData, new HttpCallbackListener() {
@@ -113,6 +120,7 @@ public class OrderFragment extends Fragment {
                     @Override
                     public void run() {
                         adapter.notifyDataSetChanged();
+                        progressDialog.dismiss();
                     }
                 });
             }
@@ -123,6 +131,7 @@ public class OrderFragment extends Fragment {
                     @Override
                     public void run() {
                         LogUtil.e("NET", address);
+                        progressDialog.dismiss();
                         Toast.makeText(getContext(), R.string.http_fail, Toast.LENGTH_SHORT).show();
                     }
                 });

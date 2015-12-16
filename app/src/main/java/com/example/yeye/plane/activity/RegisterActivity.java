@@ -1,6 +1,7 @@
 package com.example.yeye.plane.activity;
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -71,6 +72,11 @@ public class RegisterActivity extends AppCompatActivity {
                 //username or password cant be null or ""
                 Toast.makeText(RegisterActivity.this, R.string.uname_pwd_null_alert, Toast.LENGTH_SHORT).show();
             } else {
+                final ProgressDialog progressDialog = new ProgressDialog(RegisterActivity.this);
+                progressDialog.setMessage("Loading...");
+                progressDialog.setCancelable(false);
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDialog.show();
                 String url = IConst.SERVLET_ADDR + "UserRegister";
                 String data = "username=" + usernameEdit.getText() + "&" + "password=" + passwordEdit.getText();
                 HttpUtil.sendHttpRequest(url, "POST", data, new HttpCallbackListener() {
@@ -80,6 +86,7 @@ public class RegisterActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                progressDialog.dismiss();
                                 if (result) {
                                     Toast.makeText(RegisterActivity.this, R.string.register_success, Toast.LENGTH_SHORT).show();
                                 } else {
@@ -94,6 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                progressDialog.dismiss();
                                 Toast.makeText(RegisterActivity.this, R.string.http_fail, Toast.LENGTH_SHORT).show();
                             }
                         });

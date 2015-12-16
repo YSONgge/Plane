@@ -43,7 +43,6 @@ public class AirplaneEnActivity extends AppCompatActivity {
                 if (!TextUtils.isEmpty(cityName.getText())) {
                     String url = IConst.SERVLET_ADDR + "QueryAirport";
                     String data = "aName=" + cityName.getText();
-                    // String phoneNumber = null;
                     HttpUtil.sendHttpRequest(url, "POST", data, new HttpCallbackListener() {
                         @Override
                         public void onFinish(String response) {

@@ -1,5 +1,6 @@
 package com.example.yeye.plane.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -82,6 +83,11 @@ public class LoginActivity extends AppCompatActivity {
                 //username or password cant be null or ""
                 Toast.makeText(LoginActivity.this, R.string.uname_pwd_null_alert, Toast.LENGTH_SHORT).show();
             } else {
+                final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
+                progressDialog.setMessage("Loading...");
+                progressDialog.setCancelable(false);
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDialog.show();
                 String url = IConst.SERVLET_ADDR + "UserLogin";
                 String data = "username=" + usernameEdit.getText() + "&" + "password=" + passwordEdit.getText();
                 HttpUtil.sendHttpRequest(url, "POST", data, new HttpCallbackListener() {
@@ -91,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                progressDialog.dismiss();
                                 if (result) {
                                     Toast.makeText(LoginActivity.this, R.string.login_success, Toast.LENGTH_SHORT).show();
                                     rememberUser(usernameEdit.getText().toString());
@@ -110,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                progressDialog.dismiss();
                                 Toast.makeText(LoginActivity.this, R.string.http_fail, Toast.LENGTH_SHORT).show();
                             }
                         });

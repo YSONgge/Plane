@@ -1,5 +1,6 @@
 package com.example.yeye.plane.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -91,6 +92,11 @@ public class QueryFragment extends Fragment implements View.OnClickListener {
                 dest.setText(temp);
                 break;
             case R.id.btn_query_query:
+                final ProgressDialog progressDialog = new ProgressDialog(getContext());
+                progressDialog.setMessage("Loading...");
+                progressDialog.setCancelable(false);
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDialog.show();
                 String url = IConst.SERVLET_ADDR + "QueryFlight";
                 String data = "origin=" + origin.getText() + "&" +
                         "dest=" + dest.getText() + "&" +
@@ -98,6 +104,12 @@ public class QueryFragment extends Fragment implements View.OnClickListener {
                 HttpUtil.sendHttpRequest(url, "POST", data, new HttpCallbackListener() {
                             @Override
                             public void onFinish(String response) {
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        progressDialog.dismiss();
+                                    }
+                                });
                                 List<Map<String, String>> list = Utility.handleTicketResultResponse(response);
                                 if (list.size() > 0) {
                                     Intent intent = new Intent(getContext(), ResultActivity.class);
@@ -110,7 +122,6 @@ public class QueryFragment extends Fragment implements View.OnClickListener {
                                         @Override
                                         public void run() {
                                             Toast.makeText(getContext(), R.string.no_flight, Toast.LENGTH_SHORT).show();
-
                                         }
                                     });
                                 }
@@ -121,6 +132,7 @@ public class QueryFragment extends Fragment implements View.OnClickListener {
                                 getActivity().runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
+                                        progressDialog.dismiss();
                                         Toast.makeText(getContext(), R.string.http_fail, Toast.LENGTH_SHORT).show();
 
                                     }

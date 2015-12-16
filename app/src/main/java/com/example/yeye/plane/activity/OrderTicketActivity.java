@@ -1,5 +1,6 @@
 package com.example.yeye.plane.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -150,6 +151,11 @@ public class OrderTicketActivity extends AppCompatActivity {
                 e.printStackTrace();
                 LogUtil.e("onSubmit", e.toString());
             }
+            final ProgressDialog progressDialog = new ProgressDialog(OrderTicketActivity.this);
+            progressDialog.setMessage("Loading...");
+            progressDialog.setCancelable(false);
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.show();
             HttpUtil.sendHttpRequest(address, "POST", data.toString(), new HttpCallbackListener() {
                 @Override
                 public void onFinish(String response) {
@@ -157,6 +163,7 @@ public class OrderTicketActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            progressDialog.dismiss();
                             Toast.makeText(OrderTicketActivity.this, result.toString(), Toast.LENGTH_SHORT).show();
                             if (result) {
                                 finish();
@@ -170,6 +177,7 @@ public class OrderTicketActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            progressDialog.dismiss();
                             Toast.makeText(OrderTicketActivity.this, R.string.http_fail, Toast.LENGTH_SHORT).show();
                         }
                     });
