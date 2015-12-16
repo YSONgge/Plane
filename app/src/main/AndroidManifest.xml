@@ -33,6 +33,8 @@
         </activity>
         <activity android:name=".activity.AirplaneEnActivity" >
         </activity>
+        <activity android:name=".activity.OrderDetailsActivity" >
+        </activity>
     </application>
 
 </manifest>

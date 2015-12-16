@@ -1,17 +1,20 @@
 package com.example.yeye.plane.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.yeye.plane.R;
+import com.example.yeye.plane.activity.OrderDetailsActivity;
 import com.example.yeye.plane.entity.Ticket;
 import com.example.yeye.plane.util.HttpCallbackListener;
 import com.example.yeye.plane.util.HttpUtil;
@@ -19,8 +22,12 @@ import com.example.yeye.plane.util.IConst;
 import com.example.yeye.plane.util.LogUtil;
 import com.example.yeye.plane.util.Utility;
 
+import java.io.Serializable;
+import java.security.Key;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class orderFragment extends Fragment {
@@ -67,6 +74,16 @@ public class orderFragment extends Fragment {
         adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, data);
         listView.setAdapter(adapter);
 
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent i = new Intent(getContext(), OrderDetailsActivity.class);
+                i.putExtra("order", (Serializable) data.get(position));
+                startActivity(i);
+            }
+        });
         refreshBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

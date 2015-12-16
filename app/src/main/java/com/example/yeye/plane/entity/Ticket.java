@@ -9,11 +9,13 @@ import com.example.yeye.plane.util.LogUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /**
  * @author yeye
  * 
  */
-public class Ticket {
+public class Ticket implements Serializable {
 	private String orderId;
 	private String pName;
 	private String pCardNumber;
