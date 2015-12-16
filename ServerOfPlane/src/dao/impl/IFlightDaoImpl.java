@@ -99,7 +99,6 @@ public class IFlightDaoImpl implements IFlightDao {
 				flightStartTime = rs.getString(4);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			LogUtil.e(e);
 		} finally {
 			close(conn, pstmt, null);
@@ -124,7 +123,6 @@ public class IFlightDaoImpl implements IFlightDao {
 				flightArriveTime = rs.getString(5);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			LogUtil.e(e);
 		} finally {
 			close(conn, pstmt, null);
@@ -148,7 +146,6 @@ public class IFlightDaoImpl implements IFlightDao {
 				flightFare = rs.getInt(6);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			LogUtil.e(e);
 		} finally {
 			close(conn, pstmt, null);

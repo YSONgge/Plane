@@ -35,7 +35,6 @@ public class AddContactFragment extends Fragment {
      *
      * @return A new instance of fragment AddContactFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static AddContactFragment newInstance() {
         AddContactFragment fragment = new AddContactFragment();
         return fragment;
@@ -125,7 +124,6 @@ public class AddContactFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         public void addFinish();
     }
 

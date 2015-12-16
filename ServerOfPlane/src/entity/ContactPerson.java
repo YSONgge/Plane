@@ -42,7 +42,6 @@ public class ContactPerson {
 
 	public ContactPerson() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 }

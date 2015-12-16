@@ -79,7 +79,6 @@ public class Utility {
     }
 
     public static List<Ticket> handleOrderListResponse(String response) {
-        // TODO: 2015/12/14 finish
         List<Ticket> list = new ArrayList<>();
         try {
             JSONArray jsonArray = new JSONArray(response);

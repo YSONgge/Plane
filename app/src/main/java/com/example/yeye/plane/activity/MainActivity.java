@@ -18,7 +18,7 @@ import com.example.yeye.plane.fragment.OrderFragment;
 import com.example.yeye.plane.fragment.QueryFragment;
 import com.example.yeye.plane.util.LogUtil;
 
-public class MainActivity extends AppCompatActivity implements MineFragment.OnFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity{
 
     static final int NUM_ITEMS = 3;
     CollectionPagerAdapter mPagerAdapter;
@@ -93,11 +93,6 @@ public class MainActivity extends AppCompatActivity implements MineFragment.OnFr
         super.onDestroy();
         //// TODO: 2015/12/14 what if not clear?
         mViewPager.clearOnPageChangeListeners();
-    }
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
     }
 
     public static void actionStart(Context context) {

@@ -37,7 +37,6 @@ public class ITicketDaoImpl implements ITicketDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, p.getName());
 			pstmt.setString(2, p.getCardNumber());
-			// TODO: fix hard code
 			pstmt.setString(3, type);
 			pstmt.setString(4, insurance);
 			pstmt.setString(5, c.getName());
